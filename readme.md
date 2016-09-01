@@ -13,3 +13,5 @@ PHP version 5.6.28
 https://msdn.microsoft.com/pt-br/library/cc296203.aspx
 
 5º Passo: clonar repo e colocar na pasta c:/xampp/htdocs, iniciar apache no xampp e acessar localhost/[NOME PASTA DO HTDOCS]
+
+Criar Database LABBD no SQL SERVER e executar pelo menos o script de criação da tabela localizado no diretório SCRIPTS
