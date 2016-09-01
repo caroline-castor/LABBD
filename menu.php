@@ -17,19 +17,7 @@
                     <!-- mais links -->
                 </ul>
 
-                <h3 class="link-titulo">CSS em ação</h3>
-                <ul class="box">					
-                    <li><a href="#">Font interativo</a></li> 			
-                    <li><a href="#">Text interativo</a></li> 			
-                    <!-- mais links -->
-                </ul>
-
-                <h3 class="link-titulo">Efeitos CSS gerais</h3>
-                <ul class="box">
-                    <li><a href="#">Sombras em textos 1 (desatualizado)</a></li>
-                    <li><a href="#">Sombras em textos 2 (desatualizado)</a></li>
-                    <!-- mais links -->
-                </ul>
+               
 
                 <!-- mais seções -->
 
