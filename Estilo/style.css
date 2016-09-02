@@ -62,11 +62,11 @@ body {
 	text-align:center;
 	
 	/* Firefox 3.6+ */
-	background-image: -moz-linear-gradient(#3FCDCD, #F0E6D8);
+	background-image: -moz-linear-gradient(#3FCDCD, #3FCDCD);
 	/* Safari 5.1+, Chrome 10+ */
-	background-image: -webkit-linear-gradient(#3FCDCD, #F0E6D8);
+	background-image: -webkit-linear-gradient(#3FCDCD, #3FCDCD);
 	/* Opera 11.10+ */
-	background-image: -o-linear-gradient(#3FCDCD, #F0E6D8);
+	background-image: -o-linear-gradient(#3FCDCD, #3FCDCD);
 
 	}
 a.id{

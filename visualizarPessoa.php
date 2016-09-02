@@ -1,13 +1,13 @@
 <?php require_once 'connectToSQLServer.php';
 
-$tsql = "SELECT CC.sigla, C.nome FROM CONSELHOCOORDENACAOCURSO CC, CURSO C WHERE C.codigo = CC.codigoCurso";
+$tsql = "SELECT * FROM PESSOA";
 $stmt = sqlsrv_query($conn, $tsql);
 ?>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Conselho Coordenacão de Curso</title>
+<title>Pessoas</title>
 </head>
 <link rel="stylesheet" type="text/css" href="Estilo/style.css">
 <body>
@@ -17,15 +17,23 @@ $stmt = sqlsrv_query($conn, $tsql);
 
 <table border="1" align="center">
   <tr align="center" style="font-weight:bold">
-    <td>Sigla</td>
-    <td>Nome Curso</td>
-   
+    <td>CPF</td>
+    <td>Nome</td>
+    <td>Sobrenome</td>
+    <td>Email</td>
+    <td>Email 2</td>
+    <td>Telefone</td>
+    <td>Telefone 2</td>
   </tr>
   <?php while($row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)) { ?>
     <tr>
-      <td><?php echo $row['sigla']  ; ?>&nbsp; </td>
+      <td><?php echo $row['CPF']  ; ?>&nbsp; </td>
       <td><?php echo $row['nome']; ?>&nbsp; </td>
-    
+      <td><?php echo $row['sobrenome']; ?>&nbsp; </td>
+      <td><?php echo $row['email']; ?>&nbsp; </td>
+      <td><?php echo $row['email2']; ?>&nbsp; </td>
+      <td><?php echo $row['telefone']; ?>&nbsp; </td>
+      <td><?php echo $row['telefone2']; ?>&nbsp; </td>
     </tr>
     <?php }?>
     
@@ -44,12 +52,4 @@ sqlsrv_close( $conn);
 
 ?>
 
-
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 

@@ -17,7 +17,27 @@
                     <!-- mais links -->
                 </ul>
 
-               
+                <h3 class="link-titulo">Conselho Coordenacão de Curso</h3>
+                <ul class="box">
+                    <li><a href="cadastrarConselhoCoordenacaoCursoView.php">Cadastrar</a></li>
+                    <li><a href="visualizarConselhoCoordenacao.php">Visualizar</a></li>
+                    <!-- mais links -->
+                </ul>
+                
+                 <h3 class="link-titulo">Curso</h3>
+                <ul class="box">
+                    <li><a href="cadastrarCursoView.php">Cadastrar</a></li>
+                    <li><a href="visualizarCurso.php">Visualizar</a></li>
+                    <!-- mais links -->
+                </ul>
+                 
+                  <h3 class="link-titulo">Reunião</h3>
+                <ul class="box">
+                    <li><a href="cadastrarReuniaoView.php">Cadastrar</a></li>
+                    <li><a href="visualizarReuniao.php">Visualizar</a></li>
+                    <!-- mais links -->
+                </ul>
+
 
                 <!-- mais seções -->
 
