@@ -1,9 +1,11 @@
+USE LABBD;
+SET DATEFORMAT dmy;
 
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Ciencia da Computacao', 'S�o Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Ciencia da Computacao', 'São Carlos');
 INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Ciencia da Computacao', 'Sorocaba');
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia da Computacao', 'S�o Carlos');
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('nao','Sistemas de Informacao', 'S�o Carlos');
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia Eletrica', 'S�o Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia da Computacao', 'São Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('nao','Sistemas de Informacao', 'São Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia Eletrica', 'São Carlos');
 
 INSERT INTO CONSELHOCOORDENACAOCURSO (codigoCurso, sigla) VALUES (1,'BCC_SCA');
 INSERT INTO CONSELHOCOORDENACAOCURSO (codigoCurso, sigla) VALUES (2,'BCC_SOR');
@@ -27,7 +29,7 @@ INSERT INTO REUNIAO(nroOrdem, pauta, tipoReuniao, continuacao, data,
 codigoCoordenacaoCurso, siglaCoordenacaoCurso) VALUES (5,'Nova Grade Curso','presencial','nao', '04/07/2016',5,'ENGELETRICA_SCA');
 
 
-INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000001','jose@gmail.com','','1630205678','','Jos�','Santos');
+INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000001','jose@gmail.com','','1630205678','','Jos�','Santos');
 INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000002','maria@gmail.com','','1633334455','1699998888','Maria','Silva');
 INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000003','joao@gmail.com','joaosouza@gmail.com','1633222222','16878345667','Joao','Souza');
 INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000004','ana@gmail.com','','1633339900','1691189980','Ana','Cardoso');
@@ -144,5 +146,33 @@ INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro
 INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (4,'decidida proposta 5','00000000009',8);
 INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (5,'decidida proposta 1','00000000011',10);
 
+-- Dados retirados de www2.ufscar.br/vidaacademica/departamentos.php
+-- Campus São Carlos possui 3 Centros
+INSERT INTO Ofertante VALUES
+('CCET', 'Centro de Ciências Exatas e de Tecnologia'),
+('CCBS', 'Centro de Ciências Biológicas e da Saúde'),
+('CECH', 'Centro de Educação e Ciências Humanas'),
+
+('DC', 'Departamento de Computação'),
+('DECiv', 'Departamento de Engenharia Civil'),
+('DFisio', 'Departamento de Fisioterapia'),
+('DMed', 'Departamento de Medicina'),
+('DCSo', 'Departamento de Ciências Sociais'),
+('DPsi', 'Departamento de Psicologia');
+
+INSERT INTO CentroAcademico VALUES
+('CCET'),
+('CCBS'),
+('CECH');
+
+-- Dados retirados de www2.ufscar.br/vidaacademica/departamentos.php
+-- Dados retirados do Google Maps
+INSERT INTO Departamento VALUES
+('DC', 'CCET', '', '-21.979704,-47.880556'),
+('DECiv', 'CCET', '', '-21.981918,-47.880271'),
+('DFisio', 'CCBS', '', '-21.977605,-47.880199'),
+('DMed', 'CCBS', '', '-21.978036,-47.880359'),
+('DCSo', 'CECH', '', '-21.988464,-47.882500'),
+('DPsi', 'CECH', '', '-21.988400,-47.879933');
 
 GO

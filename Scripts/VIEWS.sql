@@ -1,16 +1,15 @@
+USE LABBD;
+
 --CREATE OR REPLACE
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
         WHERE TABLE_NAME = 'v_pessoa')
     DROP VIEW v_pessoa
 GO
 -- CODIGO VIEW
-CREATE VIEW v_pessoa 
+CREATE VIEW v_pessoa
 	AS
 		SELECT CPF,nome FROM PESSOA
 GO
-
-
-
 
 --CREATE OR REPLACE SQL SERVER
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
@@ -126,7 +125,7 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_comunicacoesPresidencia
 	AS
-		SELECT COM.nroOrdemReuniao, R.data, C.nome nomeCurso, COM.comunicacao, P.nome nomeMembro FROM 
+		SELECT COM.nroOrdemReuniao, R.data, C.nome nomeCurso, COM.comunicacao, P.nome nomeMembro FROM
 			COMUNICACOESPRESIDENCIA COM, REUNIAO R, CURSO C, PESSOA P
 				WHERE COM.nroOrdemReuniao = R.nroOrdem AND C.codigo = R.codigoCoordenacaoCurso AND COM.CPF = P.CPF
 GO
@@ -140,7 +139,39 @@ GO
 -- CODIGO VIEW
 CREATE VIEW v_visualizaMembro
 	AS
-		SELECT M.id_membro, M.CPF, P.nome, P.sobrenome, M.portariaIdentificacao, M.sigla AS siglaCurso, C.nome as nomeCurso, M.codigoCoordenacaoCurso  FROM MEMBRO M, PESSOA P, CURSO C 
+		SELECT M.id_membro, M.CPF, P.nome, P.sobrenome, M.portariaIdentificacao, M.sigla AS siglaCurso, C.nome as nomeCurso, M.codigoCoordenacaoCurso  FROM MEMBRO M, PESSOA P, CURSO C
 WHERE P.CPF=M.CPF AND C.codigo = M.codigoCoordenacaoCurso
 
+GO
+
+----------------- Centro Acadêmico -----------------------
+-- CREATE OR REPLACE EM SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+    	WHERE TABLE_NAME = 'v_centroAcademico')
+	DROP VIEW v_centroAcademico;
+GO
+
+-- CODIGO VIEW
+CREATE VIEW v_centroAcademico
+    AS
+   	 SELECT O.sigla AS Sigla, O.nome AS Nome
+   	 FROM Ofertante O, CentroAcademico C
+   		 WHERE O.sigla = C.siglaOfertante;
+GO
+
+---------------------- Departamento ----------------------
+-- CREATE OR REPLACE EM SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+    	WHERE TABLE_NAME = 'v_departamento')
+	DROP VIEW v_departamento;
+GO
+
+-- CODIGO VIEW
+CREATE VIEW v_departamento
+    AS
+   	 SELECT O.sigla AS Sigla, O.nome AS Nome,
+   	 		CA.siglaOfertante AS SiglaCA
+   	 FROM Ofertante O, CentroAcademico CA, Departamento D
+   		 WHERE O.sigla = D.siglaOfertante AND
+   		 	   CA.siglaOfertante = D.siglaCA;
 GO

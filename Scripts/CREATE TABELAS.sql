@@ -105,6 +105,32 @@ CREATE TABLE COMUNICACOESPRESIDENCIA(
 
 );
 
+CREATE TABLE Ofertante (
+    sigla   NVARCHAR(10)     NOT NULL,
+    nome    NVARCHAR(255)     NOT NULL,
+
+    CONSTRAINT pk_ofertante PRIMARY KEY (sigla)
+);
+
+CREATE TABLE CentroAcademico (
+    siglaOfertante      NVARCHAR(10)     NOT NULL,
+
+    CONSTRAINT pk_ca    PRIMARY KEY (siglaOfertante),
+    CONSTRAINT fk_ca_ofertante    FOREIGN KEY (siglaOfertante)
+        REFERENCES Ofertante (sigla)
+);
+
+CREATE TABLE Departamento (
+    siglaOfertante  NVARCHAR(10)     NOT NULL,
+    siglaCA         NVARCHAR(10)     NOT NULL,
+    area            NVARCHAR(20)     NULL,
+    localizacao     CHAR(21)         NULL,
+
+    CONSTRAINT pk_departamento              PRIMARY KEY (siglaOfertante),
+    CONSTRAINT fk_departamento_ofertante    FOREIGN KEY (siglaOfertante)
+        REFERENCES Ofertante (sigla),
+    CONSTRAINT fk_departamento_ca           FOREIGN KEY (siglaCA)
+        REFERENCES CentroAcademico (siglaOfertante)
+);
 
 GO
-
