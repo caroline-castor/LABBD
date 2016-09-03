@@ -31,6 +31,18 @@
                     <!-- mais links -->
                 </ul>
                  
+                  <h3 class="link-titulo">Centro Acadêmico</h3>
+                <ul class="box">
+                    <li><a href="cadastraCentroAcademicoView.php">Cadastrar</a></li>
+                    <li><a href="visualizarCentroAcademico.php">Visualizar</a></li>
+                </ul>
+
+                <h3 class="link-titulo">Departamento</h3>
+                <ul class="box">
+                    <li><a href="cadastraDepartamentoView.php">Cadastrar</a></li>
+                    <li><a href="visualizarDepartamento.php">Visualizar</a></li>
+                </ul>
+                 
                   <h3 class="link-titulo">Reunião</h3>
                 <ul class="box">
                     <li><a href="cadastrarReuniaoView.php">Cadastrar</a></li>
@@ -38,7 +50,12 @@
                     <!-- mais links -->
                 </ul>
 
-
+                   <h3 class="link-titulo">Ata</h3>
+                <ul class="box">
+                    <li><a href="cadastrarAtaView.php">Cadastrar </a></li>
+                    <li><a href="visualizarAta.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
                 <!-- mais seções -->
 
             </div> <!-- /#menu -->

@@ -76,22 +76,24 @@ CREATE TABLE ATA(
 	PRIMARY KEY(nroOrdemReuniao)
 );
 
+CREATE TABLE MEMBROSINTERVENCAO(
+	id_intervencao INT IDENTITY(1,1),
+	nroOrdemReuniao INT,
+	CPF varchar(15),
+	intervencao VARCHAR(200),
+	FOREIGN KEY(nroOrdemReuniao,CPF) REFERENCES MEMBROSPRESENTES(nroOrdemReuniao,CPF),
+	PRIMARY KEY(id_intervencao,nroOrdemReuniao)
+);
 
 CREATE TABLE DECISOESAPROVADAS(
 	 id_decisao INT IDENTITY(1,1),
-         nroOrdemReuniao INT,
+	 id_intervencao INT,
+     nroOrdemReuniao INT,
 	 decisoes VARCHAR(50),
-	 FOREIGN KEY (nroOrdemReuniao) REFERENCES ATA(nroOrdemReuniao),
-	 PRIMARY KEY (nroOrdemReuniao, id_decisao)
+	 FOREIGN KEY (id_intervencao,nroOrdemReuniao) REFERENCES MEMBROSINTERVENCAO(id_intervencao,nroOrdemReuniao),
+	 PRIMARY KEY (nroOrdemReuniao, id_decisao, id_intervencao)
 );
 
-CREATE TABLE MEMBROSINTERVENCAO(
-	nroOrdemReuniao INT,
-	CPF VARCHAR(15),
-	id_membro INT,
-	FOREIGN KEY(nroOrdemReuniao,CPF) REFERENCES MEMBROSPRESENTES(nroOrdemReuniao,CPF),
-	PRIMARY KEY(nroOrdemReuniao,CPF)
-);
 
 CREATE TABLE COMUNICACOESPRESIDENCIA(
 	 id_comunicacao INT IDENTITY(1,1),
@@ -105,6 +107,32 @@ CREATE TABLE COMUNICACOESPRESIDENCIA(
 
 );
 
+CREATE TABLE Ofertante (
+    sigla   NVARCHAR(10)     NOT NULL,
+    nome    NVARCHAR(255)     NOT NULL,
+
+    CONSTRAINT pk_ofertante PRIMARY KEY (sigla)
+);
+
+CREATE TABLE CentroAcademico (
+    siglaOfertante      NVARCHAR(10)     NOT NULL,
+
+    CONSTRAINT pk_ca    PRIMARY KEY (siglaOfertante),
+    CONSTRAINT fk_ca_ofertante    FOREIGN KEY (siglaOfertante)
+        REFERENCES Ofertante (sigla)
+);
+
+CREATE TABLE Departamento (
+    siglaOfertante  NVARCHAR(10)     NOT NULL,
+    siglaCA         NVARCHAR(10)     NOT NULL,
+    area            NVARCHAR(20)     NULL,
+    localizacao     CHAR(21)         NULL,
+
+    CONSTRAINT pk_departamento              PRIMARY KEY (siglaOfertante),
+    CONSTRAINT fk_departamento_ofertante    FOREIGN KEY (siglaOfertante)
+        REFERENCES Ofertante (sigla),
+    CONSTRAINT fk_departamento_ca           FOREIGN KEY (siglaCA)
+        REFERENCES CentroAcademico (siglaOfertante)
+);
 
 GO
-

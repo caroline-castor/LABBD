@@ -144,3 +144,28 @@ CREATE VIEW v_visualizaMembro
 WHERE P.CPF=M.CPF AND C.codigo = M.codigoCoordenacaoCurso
 
 GO
+
+
+---------------------------02/09--------------------------------------------------------------------------------------------
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_visualizaReuniao')
+    DROP VIEW v_visualizaReuniao
+GO
+-- CODIGO VIEW
+CREATE VIEW v_visualizaReuniao
+	AS
+		SELECT nroOrdem, pauta, tipoReuniao, continuacao, data, nome AS nomeCurso, siglaCoordenacaoCurso FROM REUNIAO,CURSO WHERE  codigoCoordenacaoCurso = codigo
+
+GO
+
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_visualizaReuniaoSemAta')
+    DROP VIEW v_visualizaReuniaoSemAta
+GO
+-- CODIGO VIEW
+CREATE VIEW v_visualizaReuniaoSemAta
+	AS
+		
+	SELECT * FROM v_visualizaReuniao WHERE nroOrdem NOT IN (SELECT nroOrdemReuniao FROM ATA)
+
+GO
