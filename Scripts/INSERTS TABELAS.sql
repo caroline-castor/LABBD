@@ -1,9 +1,11 @@
+USE LABBD;
+SET DATEFORMAT dmy;
 
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Ciencia da Computacao', 'São Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Ciencia da Computacao', 'SÃ£o Carlos');
 INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Ciencia da Computacao', 'Sorocaba');
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia da Computacao', 'São Carlos');
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('nao','Sistemas de Informacao', 'São Carlos');
-INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia Eletrica', 'São Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia da Computacao', 'SÃ£o Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('nao','Sistemas de Informacao', 'SÃ£o Carlos');
+INSERT INTO CURSO (presencial,nome,campus) VALUES ('sim','Engenharia Eletrica', 'SÃ£o Carlos');
 
 INSERT INTO CONSELHOCOORDENACAOCURSO (codigoCurso, sigla) VALUES (1,'BCC_SCA');
 INSERT INTO CONSELHOCOORDENACAOCURSO (codigoCurso, sigla) VALUES (2,'BCC_SOR');
@@ -27,7 +29,7 @@ INSERT INTO REUNIAO(nroOrdem, pauta, tipoReuniao, continuacao, data,
 codigoCoordenacaoCurso, siglaCoordenacaoCurso) VALUES (5,'Nova Grade Curso','presencial','nao', '04/07/2016',5,'ENGELETRICA_SCA');
 
 
-INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000001','jose@gmail.com','','1630205678','','José','Santos');
+INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000001','jose@gmail.com','','1630205678','','JosÃ©','Santos');
 INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000002','maria@gmail.com','','1633334455','1699998888','Maria','Silva');
 INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000003','joao@gmail.com','joaosouza@gmail.com','1633222222','16878345667','Joao','Souza');
 INSERT INTO PESSOA(CPF,email,email2,telefone,telefone2,nome,sobrenome) VALUES ('00000000004','ana@gmail.com','','1633339900','1691189980','Ana','Cardoso');
@@ -122,9 +124,9 @@ INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (3,'Reuniao de Eleicao d
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (4,'Reuniao de Eleicao de Coordenador');
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (5,'Estabelecimento Coordenador');
 
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (1,'00000000003','Proposta de mudança de grade');
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (2,'00000000005','Proposta de mudança de ementa');
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (3,'00000000006','Proposta de divulgação de cursos');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (1,'00000000003','Proposta de mudanÃ§a de grade');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (2,'00000000005','Proposta de mudanÃ§a de ementa');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (3,'00000000006','Proposta de divulgaÃ§Ã£o de cursos');
 INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (4,'00000000008','Proposta da semana do curso');
 
 
@@ -138,15 +140,15 @@ INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro
 INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (5,'decidida proposta 1','00000000010',10);
 
 INSERT INTO Ofertante VALUES
-('CCET', 'Centro de Ciências Exatas e de Tecnologia'),
-('CCBS', 'Centro de Ciências Biológicas e da Saúde'),
-('CECH', 'Centro de Educação e Ciências Humanas'),
+('CCET', 'Centro de CiÃªncias Exatas e de Tecnologia'),
+('CCBS', 'Centro de CiÃªncias BiolÃ³gicas e da SaÃºde'),
+('CECH', 'Centro de EducaÃ§Ã£o e CiÃªncias Humanas'),
 
-('DC', 'Departamento de Computação'),
+('DC', 'Departamento de ComputaÃ§Ã£o'),
 ('DECiv', 'Departamento de Engenharia Civil'),
 ('DFisio', 'Departamento de Fisioterapia'),
 ('DMed', 'Departamento de Medicina'),
-('DCSo', 'Departamento de Ciências Sociais'),
+('DCSo', 'Departamento de CiÃªncias Sociais'),
 ('DPsi', 'Departamento de Psicologia');
 
 INSERT INTO CentroAcademico VALUES
@@ -165,4 +167,3 @@ INSERT INTO Departamento VALUES
 ('DPsi', 'CECH', '', '-21.988400,-47.879933');
 
 GO
-

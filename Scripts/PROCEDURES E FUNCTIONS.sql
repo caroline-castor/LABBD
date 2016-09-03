@@ -1,3 +1,5 @@
+USE LABBD;
+
 DROP PROCEDURE p_atualizaTextoDescritivoAta
 GO
 CREATE PROCEDURE p_atualizaTextoDescritivoAta(@texto VARCHAR(200), @codigoReuniao INT)
@@ -73,15 +75,6 @@ CREATE FUNCTION f_totalMembrosPresentesReuniao(@nroOrdem INT)
 		RETURN @valor
 	END
 	GO
-
-	----------------------------------------------------------------------------------
-	CREATE PROCEDURE p_buscaSigla(@codigoCurso INT)
-	AS
-		BEGIN
-			SELECT sigla FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso=@codigoCurso
-		END;
-GO
-
 
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'p_buscaSigla')
 DROP PROCEDURE p_buscaSigla
