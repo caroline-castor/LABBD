@@ -2,7 +2,6 @@
 
 // Armazena a query inserção
 $tsql = "exec p_insereCentroAcademico @sigla='".$_POST['sigla']."', @nome='".$_POST['nome']."'";
-echo $tsql;
 
 //executa a query tsql, resultado fica em stmt
 $stmt = sqlsrv_query($conn,$tsql);
