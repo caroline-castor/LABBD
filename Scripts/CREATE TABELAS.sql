@@ -89,7 +89,6 @@ CREATE TABLE DECISOESAPROVADAS(
 	 id_decisao INT IDENTITY(1,1),
 	 id_intervencao INT,
      nroOrdemReuniao INT,
-	 decisoes VARCHAR(50),
 	 FOREIGN KEY (id_intervencao,nroOrdemReuniao) REFERENCES MEMBROSINTERVENCAO(id_intervencao,nroOrdemReuniao),
 	 PRIMARY KEY (nroOrdemReuniao, id_decisao, id_intervencao)
 );
