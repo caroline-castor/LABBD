@@ -23,7 +23,7 @@ $stmt = sqlsrv_query($conn, $tsql);
     <td>Conselho de Coordenação de Curso</td>
   
   </tr>
-  <?php while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) { ?>
+  <?php while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)OR die(sqlsrv_errors())) { ?>
     <tr>
       <td><?php echo $row['CPF']  ; ?>&nbsp; </td>
       <td><?php echo $row['nome'].' '.$row['sobrenome']; ?>&nbsp; </td>
