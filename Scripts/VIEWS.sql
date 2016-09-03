@@ -145,6 +145,38 @@ WHERE P.CPF=M.CPF AND C.codigo = M.codigoCoordenacaoCurso
 
 GO
 
+----------------- Centro Acadêmico -----------------------
+-- CREATE OR REPLACE EM SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+    	WHERE TABLE_NAME = 'v_centroAcademico')
+	DROP VIEW v_centroAcademico;
+GO
+
+-- CODIGO VIEW
+CREATE VIEW v_centroAcademico
+    AS
+   	 SELECT O.sigla AS Sigla, O.nome AS Nome
+   	 FROM Ofertante O, CentroAcademico C
+   		 WHERE O.sigla = C.siglaOfertante;
+GO
+
+---------------------- Departamento ----------------------
+-- CREATE OR REPLACE EM SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+    	WHERE TABLE_NAME = 'v_departamento')
+	DROP VIEW v_departamento;
+GO
+
+-- CODIGO VIEW
+CREATE VIEW v_departamento
+    AS
+   	 SELECT O.sigla AS Sigla, O.nome AS Nome,
+   	 		CA.siglaOfertante AS SiglaCA
+   	 FROM Ofertante O, CentroAcademico CA, Departamento D
+   		 WHERE O.sigla = D.siglaOfertante AND
+   		 	   CA.siglaOfertante = D.siglaCA;
+GO
+
 
 ---------------------------02/09--------------------------------------------------------------------------------------------
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS

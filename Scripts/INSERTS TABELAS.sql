@@ -71,47 +71,48 @@ INSERT INTO MEMBRO(CPF,portariaIdentificacao,codigoCoordenacaoCurso,
 INSERT INTO MEMBRO(CPF,portariaIdentificacao,codigoCoordenacaoCurso,
 	sigla) VALUES ('00000000011','423484/1',5,'ENGELETRICA_SCA');
 
-INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000002',1,'BCC_SCA',1,'20/04/2009');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000003',2,'BCC_SCA',1,'25/01/2010');
+	VALUES('00000000001',1,'BCC_SCA',1,'20/04/2009');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000004',3,'BCC_SCA',1,'25/01/2010');
+	VALUES('00000000002',2,'BCC_SCA',1,'25/01/2010');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000005',4,'BCC_SOR',2,'02/07/2010');
+	VALUES('00000000003',3,'BCC_SCA',1,'25/01/2010');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000006',5,'BCC_SOR',2,'07/05/2012');
+	VALUES('00000000004',4,'BCC_SOR',2,'02/07/2010');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000007',6,'ENC_SCA',3,'09/11/2008');
+	VALUES('00000000005',5,'BCC_SOR',2,'07/05/2012');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000008',7,'ENC_SCA',3,'11/10/2016');
+	VALUES('00000000006',6,'ENC_SCA',3,'09/11/2008');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000009',8,'SI_DIST_SCA',4,'25/08/2014');
+	VALUES('00000000007',7,'ENC_SCA',3,'11/10/2016');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000010',9,'SI_DIST_SCA',4,'17/01/2015');
+	VALUES('00000000008',8,'SI_DIST_SCA',4,'25/08/2014');
 
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
-	VALUES('00000000011',10,'ENGELETRICA_SCA',5,'22/08/2013');
+	VALUES('00000000009',9,'SI_DIST_SCA',4,'17/01/2015');
+
+INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
+	VALUES('00000000010',10,'ENGELETRICA_SCA',5,'22/08/2013');
 
 
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000002',1);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000003',2);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000004',3);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(2,'00000000005',4);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(2,'00000000006',5);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(3,'00000000007',6);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(3,'00000000008',7);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(4,'00000000009',8);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(4,'00000000010',9);
-INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(5,'00000000011',10);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000001',1);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000002',2);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000003',3);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(2,'00000000004',4);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(2,'00000000005',5);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(3,'00000000006',6);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(3,'00000000007',7);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(4,'00000000008',8);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(4,'00000000009',9);
+INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(5,'00000000010',10);
 
 
 
@@ -121,28 +122,47 @@ INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (3,'Reuniao de Eleicao d
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (4,'Reuniao de Eleicao de Coordenador');
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (5,'Estabelecimento Coordenador');
 
-
-INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,decisoes) VALUES(1,'decisao 1');
-INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,decisoes) VALUES(2,'decisao 4');
-INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,decisoes) VALUES(2,'decisao 6');
-INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,decisoes) VALUES(3,'decisao 1');
-INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,decisoes) VALUES(4,'decisao 5');
-INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,decisoes) VALUES(5,'decisao 1');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (1,'00000000003','Proposta de mudança de grade');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (2,'00000000005','Proposta de mudança de ementa');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (3,'00000000006','Proposta de divulgação de cursos');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (4,'00000000008','Proposta da semana do curso');
 
 
+INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,id_intervencao) VALUES(1,1);
+INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,id_intervencao) VALUES(2,2);
 
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,id_membro) VALUES (1,'00000000004',3);
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,id_membro) VALUES (2,'00000000006',5);
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,id_membro) VALUES (3,'00000000008',7);
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,id_membro) VALUES (4,'00000000009',8);
+INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (1,'decidida proposta 1','00000000001',1);
+INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (2,'decidida proposta  4 e 6','00000000004',4);
+INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (3,'decidida proposta 1','00000000007',7);
+INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (4,'decidida proposta 5','00000000008',8);
+INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (5,'decidida proposta 1','00000000010',10);
 
-SELECT * FROM MEMBROSPRESENTES
+INSERT INTO Ofertante VALUES
+('CCET', 'Centro de Ciências Exatas e de Tecnologia'),
+('CCBS', 'Centro de Ciências Biológicas e da Saúde'),
+('CECH', 'Centro de Educação e Ciências Humanas'),
 
-INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (1,'decidida proposta 1','00000000002',1);
-INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (2,'decidida proposta  4 e 6','00000000005',4);
-INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (3,'decidida proposta 1','00000000008',7);
-INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (4,'decidida proposta 5','00000000009',8);
-INSERT INTO COMUNICACOESPRESIDENCIA(nroOrdemReuniao, comunicacao, CPF, id_membro) VALUES (5,'decidida proposta 1','00000000011',10);
+('DC', 'Departamento de Computação'),
+('DECiv', 'Departamento de Engenharia Civil'),
+('DFisio', 'Departamento de Fisioterapia'),
+('DMed', 'Departamento de Medicina'),
+('DCSo', 'Departamento de Ciências Sociais'),
+('DPsi', 'Departamento de Psicologia');
 
+INSERT INTO CentroAcademico VALUES
+('CCET'),
+('CCBS'),
+('CECH');
+
+-- Dados retirados de www2.ufscar.br/vidaacademica/departamentos.php
+-- Dados retirados do Google Maps
+INSERT INTO Departamento VALUES
+('DC', 'CCET', '', '-21.979704,-47.880556'),
+('DECiv', 'CCET', '', '-21.981918,-47.880271'),
+('DFisio', 'CCBS', '', '-21.977605,-47.880199'),
+('DMed', 'CCBS', '', '-21.978036,-47.880359'),
+('DCSo', 'CECH', '', '-21.988464,-47.882500'),
+('DPsi', 'CECH', '', '-21.988400,-47.879933');
 
 GO
+

@@ -83,5 +83,46 @@ CREATE FUNCTION f_totalMembrosPresentesReuniao(@nroOrdem INT)
 GO
 
 
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'p_buscaSigla')
+DROP PROCEDURE p_buscaSigla
+GO
+CREATE PROCEDURE p_buscaSigla(@codigoCurso INT)
+AS
+	BEGIN
+		SELECT sigla FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso=@codigoCurso
+	END;
+GO
+
+-- Insere Centro Acadêmico
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'p_insereCentroAcademico')
+DROP PROCEDURE p_insereCentroAcademico
+GO
+CREATE PROCEDURE p_insereCentroAcademico(@sigla NVARCHAR(10), @nome NVARCHAR(255))
+    AS
+	  BEGIN
+   		 INSERT INTO Ofertante
+   		 VALUES (@sigla, @nome);
+
+   		 INSERT INTO CentroAcademico
+   		 VALUES (@sigla);
+   	 END;
+GO
+
+-- Insere Departamento
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'p_insereDepartamento')
+DROP PROCEDURE p_insereDepartamento
+GO
+CREATE PROCEDURE p_insereDepartamento(@sigla NVARCHAR(10), @nome NVARCHAR(255), @siglaCA NVARCHAR(10), 
+										@area NVARCHAR(20), @localizacao CHAR(21))
+    AS
+	  BEGIN
+   		 INSERT INTO Ofertante
+   		 VALUES (@sigla, @nome);
+   		 
+   		 INSERT INTO Departamento
+   		 VALUES (@sigla, @siglaCA, @area, @localizacao);
+   	 END;
+GO
+
 
 
