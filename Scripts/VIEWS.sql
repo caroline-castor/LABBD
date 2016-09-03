@@ -68,8 +68,8 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_ata
 	AS
-		SELECT A.nroOrdemReuniao Nro_Ordem_Reuniao, R.data, A.textoDescritivo, C.nome, CC.sigla FROM ATA A, REUNIAO R, CURSO C, CONSELHOCOORDENACAOCURSO CC
-			WHERE A.nroOrdemReuniao = R.nroOrdem AND R.codigoCoordenacaoCurso = C.codigo
+		SELECT R.pauta, R.data, A.textoDescritivo, C.nome, CC.sigla FROM ATA A, REUNIAO R, CURSO C, CONSELHOCOORDENACAOCURSO CC 
+			WHERE (A.nroOrdemReuniao = R.nroOrdem) AND (R.codigoCoordenacaoCurso = C.codigo) AND (R.codigoCoordenacaoCurso = CC.codigoCurso)
 GO
 
 
