@@ -5,7 +5,7 @@
 $tsql2 = "INSERT INTO CONSELHOCOORDENACAOCURSO(codigoCurso, sigla) VALUES (?,?)";
 
 
-$parameters = [$_POST['codigo'],$_POST['selecionaCurso']];
+$parameters = [$_POST['selecionaCurso'],$_POST['sigla']];
 
 //executa a tsql2
 $stmt2 = sqlsrv_query($conn, $tsql2, $parameters);
@@ -13,7 +13,7 @@ $stmt2 = sqlsrv_query($conn, $tsql2, $parameters);
 if( $stmt2 === false ){
 echo "Statement could not be executed.\n";
  die( print_r( sqlsrv_errors(), true));
-} 
+}
 
 //se nenhum erro ocorrer, redireciona a pagina
 echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarConselhoCoordenacao.php">';
@@ -27,5 +27,3 @@ sqlsrv_close( $conn);
 
 
 ?>
-
-

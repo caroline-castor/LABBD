@@ -17,27 +17,27 @@ and open the template in the editor.
            <div id="conteudo">
                <form action="cadastrarConselhoCoordenacaoCurso.php" name="cadastroCoordenacao" method="post">
             <table align="center">
-            <tr valign="baseline">    
+            <tr valign="baseline">
             <td nowrap="nowrap" align="right">Curso:</td>
             <td><select name="selecionaCurso">
             <?php require_once 'connectToSQLServer.php';
-            $tsql = "SELECT codigo, nome FROM CURSO C WHERE NOT EXISTS (SELECT * FROM CONSELHOCOORDENACAOCURSO) ";
+            $tsql = "SELECT * FROM CURSO C WHERE NOT EXISTS (SELECT * FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = codigo);";
             $stmt = sqlsrv_query($conn, $tsql);
-            
+
             while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
                 echo "<option value='". $row['codigo']."'>".$row['codigo']." - ".$row['nome']. '</option>';
-            }    
+            }
             ?>
-            </select>  
+            </select>
             </td>
             </tr>
             <tr valign="baseline">
-            <td nowrap="nowrap" align="right">Sigla:</td>    
+            <td nowrap="nowrap" align="right">Sigla:</td>
             <td><input type="text" name="sigla" value="" /></td>
             </tr>
-            
+
             <tr valign="baseline">
-                
+
                 <td colspan="2"><input type="submit" value="Cadastrar Curso" name="enviarPessoa" /></td>
             </tr>
             </table>
@@ -46,4 +46,3 @@ and open the template in the editor.
        </div>
     </body>
 </html>
-
