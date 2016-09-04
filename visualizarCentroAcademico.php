@@ -19,11 +19,23 @@ $stmt = sqlsrv_query($conn, $tsql);
   <tr align="center" style="font-weight:bold">
     <td>Sigla</td>
     <td>Nome</td>
+    <td>Quantidade de Departamentos</td>
   </tr>
   <?php while($row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)) { ?>
     <tr>
       <td><?php echo $row['Sigla']  ; ?>&nbsp; </td>
       <td><?php echo $row['Nome']; ?>&nbsp; </td>
+      <td>
+          <?php require_once 'connectToSQLServer.php';
+          $tsq2 = "SELECT dbo.f_totalDepartamentosNoCA(?)";
+          $parameters = [$row['Sigla']];
+
+          //executa a query tsql, resultado fica em stmt
+          $stmt2 = sqlsrv_query($conn,$tsq2,$parameters);
+          sqlsrv_fetch($stmt2);
+          echo sqlsrv_get_field($stmt2, 0);
+          ?>
+      </td>
     </tr>
   <?php }?>
 

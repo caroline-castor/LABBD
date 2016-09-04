@@ -21,7 +21,8 @@ and open the template in the editor.
             <td nowrap="nowrap" align="right">Curso:</td>
             <td><select name="selecionaCurso">
             <?php require_once 'connectToSQLServer.php';
-            $tsql = "SELECT * FROM CURSO C WHERE NOT EXISTS (SELECT * FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = codigo);";
+
+            $tsql = "SELECT * FROM dbo.f_getCursosSemConselho()";
             $stmt = sqlsrv_query($conn, $tsql);
 
             while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
