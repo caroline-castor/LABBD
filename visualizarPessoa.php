@@ -1,55 +1,82 @@
-<?php require_once 'connectToSQLServer.php';
+<?php
+require_once 'connectToSQLServer.php';
 
 $tsql = "SELECT * FROM PESSOA";
 $stmt = sqlsrv_query($conn, $tsql);
 ?>
 
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Pessoas</title>
-</head>
-<link rel="stylesheet" type="text/css" href="Estilo/style.css">
-<body>
-<div id="tudo">
-    <?php require_once 'cabecalho.php';?>
-    <div id="conteudo">
+    <head>
 
-<table border="1" align="center">
-  <tr align="center" style="font-weight:bold">
-    <td>CPF</td>
-    <td>Nome</td>
-    <td>Sobrenome</td>
-    <td>Email</td>
-    <td>Email 2</td>
-    <td>Telefone</td>
-    <td>Telefone 2</td>
-  </tr>
-  <?php while($row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)) { ?>
-    <tr>
-      <td><?php echo $row['CPF']  ; ?>&nbsp; </td>
-      <td><?php echo $row['nome']; ?>&nbsp; </td>
-      <td><?php echo $row['sobrenome']; ?>&nbsp; </td>
-      <td><?php echo $row['email']; ?>&nbsp; </td>
-      <td><?php echo $row['email2']; ?>&nbsp; </td>
-      <td><?php echo $row['telefone']; ?>&nbsp; </td>
-      <td><?php echo $row['telefone2']; ?>&nbsp; </td>
-    </tr>
-    <?php }?>
-    
-</table>
-<br />
+        <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" /> 
+      
+        <title>Pessoas</title>
+    </head>
+    <link rel="stylesheet" type="text/css" href="Estilo/style.css">
+    <body>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h2> Deseja realmente excluir este item?</h2>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Sim</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tudo">
+<?php require_once 'cabecalho.php'; ?>
+            <div id="conteudo">
 
-    </div>
+                <table border="1" align="center">
+                    <tr align="center" style="font-weight:bold">
+                        <td>CPF</td>
+                        <td>Nome</td>
+                        <td>Sobrenome</td>
+                        <td>Email</td>
+                        <td>Email 2</td>
+                        <td>Telefone</td>
+                        <td>Telefone 2</td>
+                    </tr>
+<?php while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) { ?>
+                        <tr>
+                            <td><?php echo $row['CPF']; ?>&nbsp; </td>
+                            <td><?php echo $row['nome']; ?>&nbsp; </td>
+                            <td><?php echo $row['sobrenome']; ?>&nbsp; </td>
+                            <td><?php echo $row['email']; ?>&nbsp; </td>
+                            <td><?php echo $row['email2']; ?>&nbsp; </td>
+                            <td><?php echo $row['telefone']; ?>&nbsp; </td>
+                            <td><?php echo $row['telefone2']; ?>&nbsp; </td>
 
+                            <td class="actions">
+                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Excluir</button>
+                            </td>
+                        </tr>
+<?php } ?>
 
-</div>
-</body>
+                </table>
+                <br />
+
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    </body>
 </html>
 
 <?php
-sqlsrv_close( $conn);
-
+sqlsrv_close($conn);
 ?>
 
 

@@ -10,18 +10,18 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
          <link rel="stylesheet" type="text/css" href="../Estilo/style.css"/>
-        <title>Cadastrar Curso</title>
+        <title>Cadastrar Reunião</title>
     </head>
     <body>
        <div id="tudo">
            <?php require('cabecalho.php'); ?>
            <div id="conteudo">
                <h1> Cadastrar Reunião </h1>
-               <form action="cadastrarReuniao.php" name="cadastroReuniao" method="post">
+               <form action="cadastrarReuniao.php" class="form-control" name="cadastroReuniao" method="post">
             <table align="center">
             <tr valign="baseline">    
             <td nowrap="nowrap" align="right">Número de Ordem</td>
-            <td><input type="text" name="nroOrdem" value="" /></td>
+            <td><input type="text" name="nroOrdem"  required value="" /></td>
             </tr>
             <tr valign="baseline">
             <td nowrap="nowrap" align="right">Pauta:</td>    
@@ -37,11 +37,11 @@ and open the template in the editor.
             </tr>
             <tr valign="baseline">
             <td nowrap="nowrap" align="right">Data:</td>
-            <td><input type="text" name="data" value="" /></td>
+            <td><input type="text" required name="data" value="" /></td>
             </tr>
             <tr valign="baseline">
             <td nowrap="nowrap" align="right">Coordenacão de Curso Responsável:</td>
-            <td><select name="selecionaCurso">
+            <td><select name="selecionaCurso" required>
             <?php require_once 'connectToSQLServer.php';
             $tsql = "SELECT codigo,nome,sigla FROM CURSO C, CONSELHOCOORDENACAOCURSO CC WHERE C.codigo = CC.codigoCurso";
             $stmt = sqlsrv_query($conn, $tsql);

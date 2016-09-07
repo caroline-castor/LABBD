@@ -17,18 +17,18 @@ and open the template in the editor.
            <?php require('cabecalho.php'); ?>
            <div id="conteudo">
                <h1> Cadastrar Curso </h1>
-               <form action="cadastrarCurso.php" name="cadastroCurso" method="post">
+               <form action="cadastrarCurso.php" class="form-control" name="cadastroCurso" method="post">
             <table align="center">
             <tr valign="baseline">    
             <td nowrap="nowrap" align="right">Nome:</td>
-            <td><input type="text" name="nome" value="" /></td>
+            <td><input type="text" required name="nome" value="" /></td>
             </tr>
             <tr valign="baseline">
             <td nowrap="nowrap" align="right">Campus:</td>    
-            <td><input type="text" name="campus" value="" /></td>
+            <td><input type="text" required name="campus" value="" /></td>
             </tr>
             <tr valign="baseline">
-            <td nowrap="nowrap" align="right">Presencial:</td>
+            <td nowrap="nowrap" required align="right">Presencial:</td>
             <td>
                 <input type="checkbox" name="presencial" value="sim">
             </td>

@@ -5,7 +5,7 @@
 $tsql2 = "INSERT INTO CONSELHOCOORDENACAOCURSO(codigoCurso, sigla) VALUES (?,?)";
 
 
-$parameters = [$_POST['codigo'],$_POST['selecionaCurso']];
+$parameters = [$_POST['selecionaCurso'],$_POST['sigla']];
 
 //executa a tsql2
 $stmt2 = sqlsrv_query($conn, $tsql2, $parameters);

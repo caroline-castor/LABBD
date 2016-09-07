@@ -1,5 +1,6 @@
 <html>
-    <link rel="stylesheet" type="text/css" href="../Estilo/style.css"/>
+    <link rel="stylesheet" type="text/css" href="Estilo/style.css"/>
+    <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" /> 
     <body>
         <div id="lateral">
             <div id="menu">
@@ -54,6 +55,27 @@
                 <ul class="box">
                     <li><a href="cadastrarAtaView.php">Cadastrar </a></li>
                     <li><a href="visualizarAta.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
+                   
+                    <h3 class="link-titulo">Membros Presentes</h3>
+                <ul class="box">
+                    <li><a href="cadastrarMembrosPresentesView.php">Cadastrar </a></li>
+                    <li><a href="visualizarMembrosPresentes.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
+                    
+                    <h3 class="link-titulo">Intervenção</h3>
+                <ul class="box">
+                    <li><a href="cadastrarIntervencaoView.php">Cadastrar </a></li>
+                    <li><a href="visualizarIntervencao.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
+                    
+                   <h3 class="link-titulo">Decisões Aprovadas</h3>
+                <ul class="box">
+                    <li><a href="cadastraDecisoesAprovadasView.php">Cadastrar </a></li>
+                    <li><a href="visualizarDecisoesAprovadas.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
                 <!-- mais seções -->

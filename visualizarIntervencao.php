@@ -1,21 +1,18 @@
 <?php
 require_once 'connectToSQLServer.php';
 
-$tsql = "SELECT * FROM v_ata";
+$tsql = "SELECT * FROM v_membrosIntervencao";
 $stmt = sqlsrv_query($conn, $tsql);
 ?>
 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link rel="stylesheet" type="text/css" href="Estilo/style.css">
-        
-               <title>Ata</title>
+        <title>Intervenções</title>
+       
     </head>
-
-    
+    <link rel="stylesheet" type="text/css" href="Estilo/style.css">
     <body>
-        <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -32,38 +29,41 @@ $stmt = sqlsrv_query($conn, $tsql);
                     </div>
                 </div>
             </div>
-        </div>    
-
+        </div>
         <div id="tudo">
-            <?php require_once 'cabecalho.php'; ?>
+<?php require_once 'cabecalho.php'; ?>
             <div id="conteudo">
-                <h1> Ata </h1>
+                <h1> Intervenções </h1>
                 <table border="1" align="center">
                     <tr align="center" style="font-weight:bold">
-                        <td>Pauta da Reunião</td>
-                        <td>Data Reuniao</td>
-                        <td>Conselho de Coordenação de Curso Responsável</td>
-                        <td>Ata</td>
+                        <td>Número de Ordem Reunião</td>
+                        <td>Pauta</td>
+                        <td>Intervencão</td>
+                        <td>Intervencão Realizada por</td>
+
                     </tr>
-                    <?php while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) { ?>
+<?php while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) { ?>
                         <tr>
+                            <td><?php echo $row['nroOrdemReuniao']; ?>&nbsp; </td>
                             <td><?php echo $row['pauta']; ?>&nbsp; </td>
-                            <td><?php echo date_format($row['data'], 'd/m/Y'); ?>&nbsp; </td>
-                            <td><?php echo $row['nome'] . " - " . $row['sigla']; ?>&nbsp; </td>
-                            <td><?php echo $row['textoDescritivo']; ?>&nbsp; </td>
+                            <td><?php echo $row['intervencao']; ?>&nbsp; </td>
+                            <td><?php echo $row['CPF'] . " - " . $row['nome'] . " " . $row['sobrenome']; ?>&nbsp; </td>
+
 
 
                             <td class="actions">
                                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Excluir</button>
                             </td>
                         </tr>
-                    <?php } ?>
+<?php } ?>
 
                 </table>
                 <br />
-            </div>
-        </div>
 
+            </div>
+
+
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
         <!-- Latest compiled and minified JavaScript -->
@@ -75,6 +75,7 @@ $stmt = sqlsrv_query($conn, $tsql);
 <?php
 sqlsrv_close($conn);
 ?>
+
 
 
 

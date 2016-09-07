@@ -19,7 +19,7 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_membro
 	AS
-		SELECT M.id_membro, M.CPF, P.nome FROM MEMBRO M, PESSOA P
+		SELECT M.id_membro, M.CPF, P.nome, P.sobrenome FROM MEMBRO M, PESSOA P
 			WHERE P.CPF = M.CPF
 
 GO
@@ -43,22 +43,12 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_membrosPresentesReuniao
 	AS
-		SELECT M.nroOrdemReuniao Nro_Ordem_Reuniao, M.id_membro, M.CPF, P.nome Nome_Membro FROM MEMBROSPRESENTES M, PESSOA P
+		SELECT M.nroOrdemReuniao Nro_Ordem_Reuniao, M.id_membro, M.CPF, P.nome Nome_Membro, P.sobrenome FROM MEMBROSPRESENTES M, PESSOA P
 			WHERE P.CPF = M.CPF
 GO
 
 
---CREATE OR REPLACE SQL SERVER
-IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
-        WHERE TABLE_NAME = 'v_membrosIntervencao')
-    DROP VIEW v_membrosIntervencao
-GO
---CODIGO VIEW
-CREATE VIEW v_membrosIntervencao
-	AS
-		SELECT M.nroOrdemReuniao Nro_Ordem_Reuniao, M.CPF, P.nome FROM MEMBROSINTERVENCAO M, PESSOA P
-			WHERE P.CPF = M.CPF
-GO
+
 
 --CREATE OR REPLACE SQL SERVER
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
@@ -149,20 +139,12 @@ GO
 
 
 ---------------------------02/09--------------------------------------------------------------------------------------------
-IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
-        WHERE TABLE_NAME = 'v_visualizaReuniao')
-    DROP VIEW v_visualizaReuniao
-GO
--- CODIGO VIEW
-CREATE VIEW v_visualizaReuniao
-	AS
-		SELECT nroOrdem, pauta, tipoReuniao, continuacao, data, nome AS nomeCurso, siglaCoordenacaoCurso FROM REUNIAO,CURSO WHERE  codigoCoordenacaoCurso = codigo
 
-GO
 
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
         WHERE TABLE_NAME = 'v_visualizaReuniaoSemAta')
     DROP VIEW v_visualizaReuniaoSemAta
+	
 GO
 -- CODIGO VIEW
 CREATE VIEW v_visualizaReuniaoSemAta
@@ -170,4 +152,55 @@ CREATE VIEW v_visualizaReuniaoSemAta
 		
 	SELECT * FROM v_visualizaReuniao WHERE nroOrdem NOT IN (SELECT nroOrdemReuniao FROM ATA)
 
+GO
+
+----------------------------------05/09-------------------------------------------------
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_visualizaReuniao')
+    DROP VIEW v_visualizaReuniao
+GO
+-- CODIGO VIEW
+CREATE VIEW v_visualizaReuniao
+	AS
+		SELECT nroOrdem, pauta, tipoReuniao, continuacao, data, nome AS nomeCurso, siglaCoordenacaoCurso, codigoCoordenacaoCurso FROM REUNIAO,CURSO WHERE  codigoCoordenacaoCurso = codigo
+
+GO
+
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_visualizaCoordenacaoReuniaoMembro')
+    DROP VIEW v_visualizaCoordenacaoReuniaoMembro
+	
+GO
+-- CODIGO VIEW
+CREATE VIEW v_visualizaCoordenacaoReuniaoMembro
+	AS
+		
+	SELECT * FROM v_visualizaMembro, v_visualizaReuniao vm WHERE codigoCoordenacaoCurso IN (SELECT codigoCoordenacaoCurso FROM REUNIAO R WHERE R.codigoCoordenacaoCurso = vm.codigoCoordenacaoCurso)
+
+GO
+
+--CREATE OR REPLACE SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_membrosIntervencao')
+    DROP VIEW v_membrosIntervencao
+GO
+--CODIGO VIEW
+CREATE VIEW v_membrosIntervencao
+	AS
+		SELECT M.nroOrdemReuniao, M.id_intervencao, M.intervencao, R.pauta, M.CPF, P.nome, P.sobrenome FROM MEMBROSINTERVENCAO M, PESSOA P, REUNIAO R 
+			WHERE P.CPF = M.CPF AND  M.nroOrdemReuniao = R.nroOrdem
+GO
+
+
+--CREATE OR REPLACE SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_decisoesAprovadas')
+    DROP VIEW v_decisoesAprovadas
+GO
+--CODIGO VIEW
+CREATE VIEW v_decisoesAprovadas
+	AS
+		SELECT DA.id_decisao, DA.id_intervencao, DA.nroOrdemReuniao, MI.intervencao, MI.CPF, P.nome, P.sobrenome, R.pauta FROM
+		DECISOESAPROVADAS DA, MEMBROSINTERVENCAO MI, PESSOA P, REUNIAO R WHERE DA.id_intervencao = MI.id_intervencao AND 
+		MI.CPF = P.CPF AND DA.nroOrdemReuniao = R.nroOrdem;
 GO

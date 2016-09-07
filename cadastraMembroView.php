@@ -17,11 +17,11 @@ and open the template in the editor.
            <?php require('cabecalho.php'); ?>
            <div id="conteudo">
                <h1> Cadastrar Membro </h1>
-               <form action="cadastrarMembro.php" name="cadastroMembro" method="post">
+               <form action="cadastrarMembro.php" class="form-control" name="cadastroMembro" method="post">
             <table align="center">
             <tr valign="baseline">    
             <td nowrap="nowrap" align="right">CPF:</td>
-            <td><input type="text" name="cpf" value="" /></td>
+            <td><input type="text" required name="cpf" value="" /></td>
             </tr>
             <tr valign="baseline">
             <td nowrap="nowrap" align="right">Portaria de Identificação:</td>    
