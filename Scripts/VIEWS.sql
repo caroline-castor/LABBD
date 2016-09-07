@@ -175,9 +175,10 @@ GO
 CREATE VIEW v_visualizaCoordenacaoReuniaoMembro
 	AS
 		
-	SELECT * FROM v_visualizaMembro, v_visualizaReuniao vm WHERE codigoCoordenacaoCurso IN (SELECT codigoCoordenacaoCurso FROM REUNIAO R WHERE R.codigoCoordenacaoCurso = vm.codigoCoordenacaoCurso)
-
+	SELECT M.id_membro, M.CPF, P.nome, P.sobrenome, R.nroOrdem, R.codigoCoordenacaoCurso FROM MEMBRO M, REUNIAO R, PESSOA P  WHERE M.codigoCoordenacaoCurso = R.codigoCoordenacaoCurso AND
+	P.CPF = M.CPF;
 GO
+
 
 --CREATE OR REPLACE SQL SERVER
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS

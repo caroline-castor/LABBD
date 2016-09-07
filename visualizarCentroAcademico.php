@@ -6,6 +6,7 @@ $stmt = sqlsrv_query($conn, $tsql);
 ?>
 
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="Estilo/style.css">
@@ -67,6 +68,7 @@ $stmt = sqlsrv_query($conn, $tsql);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     </body>
+
 </html>
 
 <?php

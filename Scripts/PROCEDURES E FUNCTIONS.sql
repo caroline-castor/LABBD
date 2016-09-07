@@ -1,3 +1,5 @@
+USE LABBD;
+
 DROP PROCEDURE p_atualizaTextoDescritivoAta
 GO
 CREATE PROCEDURE p_atualizaTextoDescritivoAta(@texto VARCHAR(200), @codigoReuniao INT)
@@ -74,15 +76,6 @@ CREATE FUNCTION f_totalMembrosPresentesReuniao(@nroOrdem INT)
 	END
 	GO
 
-	----------------------------------------------------------------------------------
-	CREATE PROCEDURE p_buscaSigla(@codigoCurso INT)
-	AS
-		BEGIN
-			SELECT sigla FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso=@codigoCurso
-		END;
-GO
-
-
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'p_buscaSigla')
 DROP PROCEDURE p_buscaSigla
 GO
@@ -124,5 +117,44 @@ CREATE PROCEDURE p_insereDepartamento(@sigla NVARCHAR(10), @nome NVARCHAR(255), 
    	 END;
 GO
 
+-- Conta quantos Departamentos estão associados a um determinado CA
+DROP FUNCTION f_totalDepartamentosNoCA
+GO
+CREATE FUNCTION f_totalDepartamentosNoCA(@siglaCA NVARCHAR(10))
+   	 RETURNS INT
+   	 AS
+   		 BEGIN
+   			 DECLARE @cont INT;
+   			 
+   			 SET @cont = (SELECT COUNT(D.SiglaOfertante) FROM Departamento D WHERE D.siglaCA = @siglaCA);
+   			 
+	   		 RETURN @cont;
+   	 END
+    GO
 
+-- Dado uma sigla, retorna se ela pertence a um Departamento, "D", ou Centro Acadêmico, "CA"
+DROP FUNCTION f_tipoDoOfertante
+GO
+CREATE FUNCTION f_tipoDoOfertante(@sigla NVARCHAR(10))
+	RETURNS NVARCHAR(2)
+	AS
+	  BEGIN
+		DECLARE @tipo NVARCHAR(2);
+		
+		IF EXISTS (SELECT * FROM Departamento D WHERE D.SiglaOfertante=@sigla)
+		    SET @tipo = 'D';
+		ELSE IF EXISTS (SELECT * FROM CentroAcademico CA WHERE CA.SiglaOfertante=@sigla)
+			SET @tipo = 'CA';
+		ELSE
+			SET @tipo = NULL;
+   		 
+	   	 RETURN @tipo;
+   	 END;
+GO
 
+-- Só é possível criar um Conselho de Graduação para um Curso que ainda não o possui. Essa função retorna tais cursos.
+DROP FUNCTION f_getCursosSemConselho;
+GO
+CREATE FUNCTION f_getCursosSemConselho()
+RETURNS TABLE
+RETURN (SELECT codigo, nome FROM CURSO C WHERE NOT EXISTS (SELECT * FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = codigo));

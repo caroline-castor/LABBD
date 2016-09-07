@@ -1,12 +1,19 @@
 <html>
-    <link rel="stylesheet" type="text/css" href="Estilo/style.css"/>
+
     <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" /> 
+
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../Estilo/style.css"/>
+    </head>
+
+
     <body>
         <div id="lateral">
             <div id="menu">
 
                 <h3 class="link-titulo">Pessoa</h3>
-                <ul class="box">					
+                <ul class="box">
                     <li><a href="cadastraPessoaView.php">Cadastrar</a></li>
                     <li><a href="visualizarPessoa.php">Visualizar</a></li>
                 </ul>
@@ -24,14 +31,14 @@
                     <li><a href="visualizarConselhoCoordenacao.php">Visualizar</a></li>
                     <!-- mais links -->
                 </ul>
-                
+
                  <h3 class="link-titulo">Curso</h3>
                 <ul class="box">
                     <li><a href="cadastrarCursoView.php">Cadastrar</a></li>
                     <li><a href="visualizarCurso.php">Visualizar</a></li>
                     <!-- mais links -->
                 </ul>
-                 
+
                   <h3 class="link-titulo">Centro Acadêmico</h3>
                 <ul class="box">
                     <li><a href="cadastraCentroAcademicoView.php">Cadastrar</a></li>
@@ -43,7 +50,7 @@
                     <li><a href="cadastraDepartamentoView.php">Cadastrar</a></li>
                     <li><a href="visualizarDepartamento.php">Visualizar</a></li>
                 </ul>
-                 
+
                   <h3 class="link-titulo">Reunião</h3>
                 <ul class="box">
                     <li><a href="cadastrarReuniaoView.php">Cadastrar</a></li>

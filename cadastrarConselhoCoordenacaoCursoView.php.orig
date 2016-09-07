@@ -12,7 +12,7 @@ and open the template in the editor.
         <title>Cadastrar Conselho Coordenação Curso</title>
     </head>
     <body>
-
+<<<<<<< HEAD
       
         <div id="tudo">
             <?php require_once 'cabecalho.php' ?>;
@@ -51,6 +51,40 @@ and open the template in the editor.
                 </form>
             </div>
         </div>
+=======
+       <div id="tudo">
+           <?php require_once 'cabecalho.php' ?>;
+           <div id="conteudo">
+               <form action="cadastrarConselhoCoordenacaoCurso.php" name="cadastroCoordenacao" method="post">
+            <table align="center">
+            <tr valign="baseline">
+            <td nowrap="nowrap" align="right">Curso:</td>
+            <td><select name="selecionaCurso">
+            <?php require_once 'connectToSQLServer.php';
 
+            $tsql = "SELECT * FROM dbo.f_getCursosSemConselho()";
+            $stmt = sqlsrv_query($conn, $tsql);
+
+            while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
+                echo "<option value='". $row['codigo']."'>".$row['codigo']." - ".$row['nome']. '</option>';
+            }
+            ?>
+            </select>
+            </td>
+            </tr>
+            <tr valign="baseline">
+            <td nowrap="nowrap" align="right">Sigla:</td>
+            <td><input type="text" name="sigla" value="" /></td>
+            </tr>
+
+            <tr valign="baseline">
+
+                <td colspan="2"><input type="submit" value="Cadastrar Curso" name="enviarPessoa" /></td>
+            </tr>
+            </table>
+        </form>
+           </div>
+       </div>
+>>>>>>> 32e850cb2ed420ce8403f4c1e29eafaf598d9ab3
     </body>
 </html>

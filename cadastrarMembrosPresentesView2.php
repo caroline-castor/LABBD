@@ -32,7 +32,7 @@ and open the template in the editor.
                                   <?php
                                         require_once 'connectToSQLServer.php';
                                         echo $_POST['selectReuniao'];
-                                    $tsql = "SELECT * FROM v_visualizaCoordenacaoReuniaoMembro WHERE nroOrdem  id_membro NOT IN(SELECT id_membro from MEMBROSPRESENTES WHERE nroOrdemReuniao=".$_POST['selectReuniao'].")" ;
+                                    $tsql = "SELECT * FROM " ;
                                     $stmt = sqlsrv_query($conn, $tsql);
                                     $resultados= sqlsrv_num_rows ($stmt);
                                     if($resultados > 0){
