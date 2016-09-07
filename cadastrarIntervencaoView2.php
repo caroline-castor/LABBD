@@ -26,11 +26,11 @@ and open the template in the editor.
             
             <td><select name="selecionaMembro" required>
             <?php require_once 'connectToSQLServer.php';
-            $tsql = "SELECT * FROM MEMBROSPRESENTES WHERE nroOrdemReuniao=".$_POST['selectReuniao'];
+            $tsql = "SELECT * FROM v_membrosPresentesReuniao WHERE nroOrdemReuniao=".$_POST['selectReuniao'];
             $stmt = sqlsrv_query($conn, $tsql);
             
             while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
-                echo "<option value='". $row['id_membro']."'>".$row['CPF']." - ".$row['nome']. $row['sobrenome'].'</option>';
+                echo "<option value='". $row['id_membro']."'>".$row['CPF']." - ".$row['nome']. " ". $row['sobrenome'].'</option>';
             }    
             ?>
             </select>  
@@ -38,13 +38,13 @@ and open the template in the editor.
             </tr>
             <tr valign="baseline">
                 <td nowrap="nowrap" align="right">Intervenção:</td>
-                <td><textarea name="intervencao" rows="7" cols="20"></textarea><td>
+                <td><textarea name="intervencao" rows="7" cols="20"></textarea></td>
                 
             </tr>
-             <input type="hidden" name="nroOrdem" value="<?php echo $_POST='selectReuniao'; ?>" />
+             <input type="hidden" name="nroOrdem" value="<?php echo $_POST['selectReuniao']; ?>" />
             
             <tr valign="baseline">
-                <td colspan="2"><input type="submit" value="Cadastrar Membro" name="enviarPessoa" /></td>
+                <td colspan="2"><input type="submit" value="Cadastrar Intervenção" name="enviarPessoa" /></td>
             </tr>
             </table>
         </form>

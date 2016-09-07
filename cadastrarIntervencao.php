@@ -2,12 +2,12 @@
 
 
 // Armazena a query de insercao
-$tsql = "INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (?,?,?)";
+$tsql = "INSERT INTO MEMBROSINTERVENCAO (nroOrdemReuniao,CPF,intervencao) VALUES (?,?,?)";
 $tsql2 = "SELECT CPF from MEMBRO WHERE id_membro =".$_POST['selecionaMembro'];
 $stmt2 = sqlsrv_query($conn,$tsql2);
 //verifica se o retorno é falso
 if( $stmt2 === false ){
-echo "Statement could not be executed.\n";
+echo "Statement could not be executed 1.\n";
  die( print_r( sqlsrv_errors(), true));
 } 
 
@@ -19,7 +19,7 @@ $parameters = [intval($_POST['nroOrdem']),$CPF['CPF'],$_POST['intervencao']];
 $stmt = sqlsrv_query($conn,$tsql,$parameters);
 //verifica se o retorno é falso
 if( $stmt === false ){
-echo "Statement could not be executed.\n";
+echo "Statement could not be executed 2.\n".$_POST['nroOrdem'];
  die( print_r( sqlsrv_errors(), true));
 } 
 

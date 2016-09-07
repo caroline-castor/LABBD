@@ -30,12 +30,12 @@ and open the template in the editor.
                             <td>
                                 <select multiple="multiple" id="my-select" name="my-select[]" >
                                   <?php
-                                        require_once 'connectToSQLServer.php';
-                                        echo $_POST['selectReuniao'];
-                                    $tsql = "SELECT * FROM " ;
+                                    require_once 'connectToSQLServer.php';
+                                        
+                                    $tsql = "SELECT * FROM v_visualizaCoordenacaoReuniaoMembro where nroOrdem=" .$_POST['selectReuniao']."AND id_membro NOT IN (SELECT id_membro FROM MEMBROSPRESENTES)";
                                     $stmt = sqlsrv_query($conn, $tsql);
-                                    $resultados= sqlsrv_num_rows ($stmt);
-                                    if($resultados > 0){
+                         
+                                    if(sqlsrv_has_rows($stmt)){
                                     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                                         echo "<option value='" . $row['id_membro'] . "'>" . $row['CPF'] . " - " . $row['nome'] . " " . $row['sobrenome'] . '</option>';
                                     }

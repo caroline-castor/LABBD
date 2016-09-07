@@ -3,7 +3,7 @@
 require_once 'connectToSQLServer.php';
 header('Content-Type: text/html; charset=iso-8859-1');
 
-$membros = $_POST['selected_membros'];
+$membros = $_POST['my-select'];
 
 for ($i = 0; $i < count($membros); $i++) {
 
@@ -22,7 +22,7 @@ for ($i = 0; $i < count($membros); $i++) {
     $cpf = sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC);
 
 
-    $parameters = [$_POST['selecionaReuniao'], $cpf['CPF'], $membros[$i]];
+    $parameters = [$_POST['nroOrdem'], $cpf['CPF'], $membros[$i]];
 
 //executa a query tsql, resultado fica em stmt
     $stmt = sqlsrv_query($conn, $tsql, $parameters);
@@ -35,7 +35,7 @@ for ($i = 0; $i < count($membros); $i++) {
 
 
 //se nenhum erro ocorrer, redireciona a pagina
-//echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarCurso.php">';
+echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarMembrosPresentes.php">';
 
     /* Free statement and connection resources. */
 

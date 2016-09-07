@@ -35,17 +35,6 @@ CREATE VIEW v_conselhoCoordCurso
 		SELECT CON.codigoCurso Codigo_Curso, C.nome Nome_Curso, CON.sigla Sigla_Curso FROM CONSELHOCOORDENACAOCURSO CON, CURSO C
 GO
 
--- CREATE OR REPLACE SQL SERVER
-IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
-        WHERE TABLE_NAME = 'v_membrosPresentesReuniao')
-    DROP VIEW v_membrosPresentesReuniao
-GO
---CODIGO VIEW
-CREATE VIEW v_membrosPresentesReuniao
-	AS
-		SELECT M.nroOrdemReuniao Nro_Ordem_Reuniao, M.id_membro, M.CPF, P.nome Nome_Membro, P.sobrenome FROM MEMBROSPRESENTES M, PESSOA P
-			WHERE P.CPF = M.CPF
-GO
 
 
 
@@ -204,4 +193,19 @@ CREATE VIEW v_decisoesAprovadas
 		SELECT DA.id_decisao, DA.id_intervencao, DA.nroOrdemReuniao, MI.intervencao, MI.CPF, P.nome, P.sobrenome, R.pauta FROM
 		DECISOESAPROVADAS DA, MEMBROSINTERVENCAO MI, PESSOA P, REUNIAO R WHERE DA.id_intervencao = MI.id_intervencao AND 
 		MI.CPF = P.CPF AND DA.nroOrdemReuniao = R.nroOrdem;
+GO
+
+
+--------------------------------------- 07/09-----------------------------------
+
+-- CREATE OR REPLACE SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_membrosPresentesReuniao')
+    DROP VIEW v_membrosPresentesReuniao
+GO
+--CODIGO VIEW
+CREATE VIEW v_membrosPresentesReuniao
+	AS
+		SELECT M.nroOrdemReuniao, R.pauta, R.data, M.id_membro, M.CPF, P.nome, P.sobrenome FROM MEMBROSPRESENTES M, PESSOA P, REUNIAO R
+			WHERE P.CPF = M.CPF AND R.nroOrdem = M.nroOrdemReuniao
 GO
