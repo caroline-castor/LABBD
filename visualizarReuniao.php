@@ -57,13 +57,11 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['nomeCurso']; ?>&nbsp; </td>
                             <td><?php echo $row['siglaCoordenacaoCurso']; ?>&nbsp; </td>
 
-
-
+                            
+                                
                             <td class="actions">
-                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Excluir</button>
+                                <a class="btn btn-danger btn-xs" href="excluiReuniao.php?nroOrdem=<?php echo $row['nroOrdem'];?>">Excluir</a>
                             </td>
-
-
                         </tr>
 <?php } ?>
 

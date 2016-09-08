@@ -18,7 +18,7 @@ and open the template in the editor.
            <div id="conteudo">
                <h1> Cadastrar Interveção pt.2 </h1>
                <p> Por favor, escolha um membro </p><br><br>
-               <form action="cadastrarIntervencao.php" class="form-control" name="cadastraIntervencao" method="post">
+               <form action="cadastrarIntervencao.php" autocomplete="off" class="form-control" name="cadastraIntervencao" method="post">
             <table align="center">
            
             <tr valign="baseline">
@@ -29,9 +29,14 @@ and open the template in the editor.
             $tsql = "SELECT * FROM v_membrosPresentesReuniao WHERE nroOrdemReuniao=".$_POST['selectReuniao'];
             $stmt = sqlsrv_query($conn, $tsql);
             
+            if(sqlsrv_has_rows($stmt)){
             while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
                 echo "<option value='". $row['id_membro']."'>".$row['CPF']." - ".$row['nome']. " ". $row['sobrenome'].'</option>';
             }    
+            }else{
+                 echo "<option value=''> Nenhum membro presente encontrado </option>";
+            }
+            
             ?>
             </select>  
             </td>

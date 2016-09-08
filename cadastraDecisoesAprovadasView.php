@@ -17,7 +17,7 @@ and open the template in the editor.
            <div id="conteudo">
                <h1>Cadastrar Decisões Aprovadas</h1>
                <p> Por favor, selecione uma reunião </p><br><br>
-               <form action="cadastraDecisoesAprovadasView2.php" class="form-control" name="cadastroDecisao" method="post">
+               <form action="cadastraDecisoesAprovadasView2.php" autocomplete="off" class="form-control" name="cadastroDecisao" method="post">
             <table align="center">
             <tr valign="baseline">    
                 <td nowrap="nowrap" align="right">Reunião:</td>

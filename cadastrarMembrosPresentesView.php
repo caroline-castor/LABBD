@@ -24,7 +24,7 @@ and open the template in the editor.
             <div id="conteudo">
                 <h1> Cadastrar Membros Presentes </h1>
                 <p> Por favor, selecione uma reunião </p><br><br>
-                <form action="cadastrarMembrosPresentesView2.php" class="form-control" name="cadastroMembrosPresentes" method="post">
+                <form action="cadastrarMembrosPresentesView2.php" autocomplete="off" class="form-control" name="cadastroMembrosPresentes" method="post">
                     <table align="center">
                         <tr valign="baseline">    
                             <td nowrap="nowrap" align="right">Reunião:</td>
@@ -36,11 +36,13 @@ and open the template in the editor.
                                     require_once 'connectToSQLServer.php';
                                     $tsql = "SELECT * FROM v_visualizaReuniao";
                                     $stmt = sqlsrv_query($conn, $tsql);
-
+                                    if(sqlsrv_has_rows($stmt)){
                                     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                                         echo "<option value='" . $row['nroOrdem'] . "'>" . $row['nroOrdem'] . " - " . $row['pauta'] . "-" . $row['siglaCoordenacaoCurso'] . "-" . $row['nomeCurso'] . '</option>';
                                     }
-                                    
+                                    }else{
+                                        echo "<option value=''> Nenhuma reunião encontrada </option>";
+                                    }
                                     
                                     ?>
                                 </select> 

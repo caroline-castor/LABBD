@@ -17,7 +17,15 @@ $sigla=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
 $codigoCurso = $_POST['selecionaCurso'];
 
-$parameters = [$_POST['nroOrdem'],$_POST['pauta'],$_POST['tipoReuniao'], $_POST['continuacao'],
+ if(isset($_POST['continuacao'])){
+     $continuacao = 'sim';
+ }else{
+     $continuacao = 'nao';
+            
+ }
+         
+
+$parameters = [$_POST['nroOrdem'],$_POST['pauta'],$_POST['tipoReuniao'], $continuacao,
     $_POST['data'],$codigoCurso,$sigla['sigla']];
 
 //executa a tsql2

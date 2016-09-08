@@ -39,18 +39,6 @@ GO
 
 
 
---CREATE OR REPLACE SQL SERVER
-IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
-        WHERE TABLE_NAME = 'v_ata')
-    DROP VIEW v_ata
-GO
---CODIGO VIEW
-CREATE VIEW v_ata
-	AS
-		SELECT R.pauta, R.data, A.textoDescritivo, C.nome, CC.sigla FROM ATA A, REUNIAO R, CURSO C, CONSELHOCOORDENACAOCURSO CC 
-			WHERE (A.nroOrdemReuniao = R.nroOrdem) AND (R.codigoCoordenacaoCurso = C.codigo) AND (R.codigoCoordenacaoCurso = CC.codigoCurso)
-GO
-
 
 --CREATE OR REPLACE SQL SERVER
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
@@ -208,4 +196,18 @@ CREATE VIEW v_membrosPresentesReuniao
 	AS
 		SELECT M.nroOrdemReuniao, R.pauta, R.data, M.id_membro, M.CPF, P.nome, P.sobrenome FROM MEMBROSPRESENTES M, PESSOA P, REUNIAO R
 			WHERE P.CPF = M.CPF AND R.nroOrdem = M.nroOrdemReuniao
+GO
+
+
+
+--CREATE OR REPLACE SQL SERVER
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
+        WHERE TABLE_NAME = 'v_ata')
+    DROP VIEW v_ata
+GO
+--CODIGO VIEW
+CREATE VIEW v_ata
+	AS
+		SELECT R.pauta, R.data, A.textoDescritivo, A.nroOrdemReuniao, C.nome, CC.sigla FROM ATA A, REUNIAO R, CURSO C, CONSELHOCOORDENACAOCURSO CC 
+			WHERE (A.nroOrdemReuniao = R.nroOrdem) AND (R.codigoCoordenacaoCurso = C.codigo) AND (R.codigoCoordenacaoCurso = CC.codigoCurso)
 GO

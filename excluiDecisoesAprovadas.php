@@ -1,13 +1,11 @@
 <?php require_once 'connectToSQLServer.php';
 
-
+$id_decisao = $_GET["id_decisao"];
 // Armazena a query de insercao
-$tsql = "INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,id_intervencao) VALUES (?,?)";
-
-$parameters = [$_POST['nroOrdem'],$_POST['selecionaIntervencao']];
+$tsql = "DELETE FROM DECISOESAPROVADAS WHERE id_decisao=".$id_decisao;
 
 //executa a query tsql, resultado fica em stmt
-$stmt = sqlsrv_query($conn,$tsql,$parameters);
+$stmt = sqlsrv_query($conn,$tsql);
 //verifica se o retorno é falso
 if( $stmt === false ){
 echo "Statement could not be executed.\n";

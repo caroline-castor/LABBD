@@ -18,7 +18,7 @@ and open the template in the editor.
            <div id="conteudo">
                <h1> Cadastrar Decisões Aprovadas pt.2 </h1>
                <p> Por favor, escolha uma intervenção </p><br><br>
-               <form action="cadastrarDecisao.php" class="form-control" name="cadastraDecisao" method="post">
+               <form action="cadastrarDecisao.php" autocomplete="off" class="form-control" name="cadastraDecisao" method="post">
             <table align="center">
            
             <tr valign="baseline">

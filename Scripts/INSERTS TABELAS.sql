@@ -104,6 +104,10 @@ INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,
 INSERT INTO MEMBRO_CONSELHOCOORDENACAOCURSO(CPF,id_membro,siglaCoordenacaoCurso,codigoCoordenacaoCurso,dataPosse)
 	VALUES('00000000010',10,'ENGELETRICA_SCA',5,'22/08/2013');
 
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (1,'00000000003','Proposta de mudança de grade');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (2,'00000000005','Proposta de mudança de ementa');
+INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (3,'00000000006','Proposta de divulgação de cursos');
+
 
 INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000001',1);
 INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(1,'00000000002',2);
@@ -118,16 +122,13 @@ INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro)VALUES(5,'00000000010
 
 
 
+
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (1,'Reuniao de Atualizacao de normas')
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (2,'Reuniao de Estabelecimento de normas');
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (3,'Reuniao de Eleicao de Coordenador');
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (4,'Reuniao de Eleicao de Coordenador');
 INSERT INTO ATA(nroOrdemReuniao,textoDescritivo) VALUES (5,'Estabelecimento Coordenador');
 
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (1,'00000000003','Proposta de mudança de grade');
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (2,'00000000005','Proposta de mudança de ementa');
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (3,'00000000006','Proposta de divulgação de cursos');
-INSERT INTO MEMBROSINTERVENCAO(nroOrdemReuniao,CPF,intervencao) VALUES (4,'00000000008','Proposta da semana do curso');
 
 
 INSERT INTO DECISOESAPROVADAS(nroOrdemReuniao,id_intervencao) VALUES(1,1);

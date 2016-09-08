@@ -12,12 +12,13 @@ and open the template in the editor.
          <link rel="stylesheet" type="text/css" href="../Estilo/style.css"/>
         <title>Cadastrar Reunião</title>
     </head>
-    <body>
+
+    <body >
        <div id="tudo">
            <?php require('cabecalho.php'); ?>
            <div id="conteudo">
                <h1> Cadastrar Reunião </h1>
-               <form action="cadastrarReuniao.php" class="form-control" name="cadastroReuniao" method="post">
+               <form action="cadastrarReuniao.php" autocomplete="off" class="form-control" name="cadastroReuniao" method="post">
             <table align="center">
             <tr valign="baseline">    
             <td nowrap="nowrap" align="right">Número de Ordem</td>
@@ -54,7 +55,7 @@ and open the template in the editor.
             </td>
             </tr>
             <tr valign="baseline">
-                <td colspan="2"><input type="submit" value="Cadastrar Curso" name="enviarCurso" /></td>
+                <td colspan="2"><input type="submit" value="Cadastrar Reunião" name="enviarCurso" /></td>
             </tr>
             </table>
         </form>

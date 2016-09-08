@@ -17,7 +17,7 @@ and open the template in the editor.
         <div id="tudo">
             <?php require_once 'cabecalho.php' ?>;
             <div id="conteudo">
-                <form action="cadastrarConselhoCoordenacaoCurso.php" name="cadastroCoordenacao" method="post">
+                <form action="cadastrarConselhoCoordenacaoCurso.php" autocomplete="off" name="cadastroCoordenacao" method="post">
                     <table align="center">
                         <tr valign="baseline">    
                             <td nowrap="nowrap" align="right">Curso:</td>

@@ -25,7 +25,7 @@ echo "Statement could not be executed 2.\n".$_POST['nroOrdem'];
 
 
 //se nenhum erro ocorrer, redireciona a pagina
-echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarCurso.php">';
+echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarIntervencao.php">';
 
 /* Free statement and connection resources. */
 sqlsrv_free_stmt( $stmt);

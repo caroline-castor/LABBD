@@ -23,7 +23,7 @@ and open the template in the editor.
             <?php require('cabecalho.php'); ?>
             <div id="conteudo">
                 <h1> Cadastrar Membros Presentes - Parte 2 </h1>
-                <form action="cadastrarMembrosPresentes.php" class="form-control" name="cadastroMembrosPresentes" method="post">
+                <form action="cadastrarMembrosPresentes.php" autocomplete="off" class="form-control" name="cadastroMembrosPresentes" method="post">
                     <table align="center">
                         <tr valign="baseline">    
                             <td nowrap="nowrap" valign="top">Membros do Conselho:</td>
