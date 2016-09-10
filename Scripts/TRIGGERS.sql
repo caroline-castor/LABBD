@@ -9,15 +9,15 @@ AS
 			@ocorrenciaMembro INT,
 			@ocorrenciaReuniaoConselho INT
 			
-		SELECT @nroOrdem= nroOrdemReuniao, @cpf = CPF, @id_membro= id_membro FROM inserted
+		SELECT @nroOrdem= nroOrdemReuniao, @cpf = CPF_MP, @id_membro= id_membro FROM inserted
 		SET @ocorrenciaReuniaoConselho = (SELECT COUNT(DISTINCT codigoCoordenacaoCurso) FROM v_visualizaReuniao WHERE codigoCoordenacaoCurso IN(SELECT codigoCoordenacaoCurso FROM v_visualizaMembro WHERE CPF=@cpf))
 			 IF @ocorrenciaReuniaoConselho > 0
 				BEGIN
-				  INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro) VALUES (@nroOrdem, @cpf, @id_membro)
+				  INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF_MP,id_membro) VALUES (@nroOrdem, @cpf, @id_membro)
 				END;
 			
 		ELSE
-			RAISERROR('Membro não faz parte do conselho que organizou a reunião', 50001, 1)
+			RAISERROR('Membro nï¿½o faz parte do conselho que organizou a reuniï¿½o', 50001, 1)
 			
 			
 	END;
@@ -50,7 +50,7 @@ AS
 			@intervencao VARCHAR(200)
 	
 		SELECT @id_intervencao = id_intervencao,
-		 @nroOrdemReuniao= nroOrdemReuniao, @CPF = CPF, @intervencao = intervencao FROM deleted
+		 @nroOrdemReuniao= nroOrdemReuniao, @CPF = CPF_MI, @intervencao = intervencao FROM deleted
 		DELETE FROM DECISOESAPROVADAS WHERE id_intervencao = @id_intervencao
 		DELETE FROM MEMBROSINTERVENCAO WHERE id_intervencao = @id_intervencao	
 	END;
@@ -65,7 +65,7 @@ AS
 			@nroOrdemReuniao INT,
 			@CPF VARCHAR(15),
 			@id_intervencao INT
-		SELECT @id_membro = id_membro, @nroOrdemReuniao= nroOrdemReuniao, @CPF=CPF FROM deleted
+		SELECT @id_membro = id_membro, @nroOrdemReuniao= nroOrdemReuniao, @CPF=CPF_MP FROM deleted
 		DELETE FROM MEMBROSINTERVENCAO WHERE @CPF = @CPF
 		DELETE FROM MEMBROSPRESENTES WHERE @id_membro = id_membro	
 	END;
@@ -100,3 +100,31 @@ AS
 			
 	END;
 GO
+
+/* ------------------------------ MURIEL ------------------------------ */
+
+DROP TRIGGER mensagemInsercaoEstudante
+GO
+CREATE TRIGGER mensagemInsercaoEstudante
+ON Estudante  
+AFTER INSERT
+AS RAISERROR ('Studente Inserted',10,1);  
+GO
+
+DROP TRIGGER mensagemInsercaoDocente
+GO
+CREATE TRIGGER mensagemInsercaoDocente
+ON Docente
+AFTER INSERT
+AS RAISERROR ('Professor Inserted',10,1);  
+GO
+
+DROP TRIGGER mensagemInsercaoTA
+GO
+CREATE TRIGGER mensagemInsercaoTA
+ON TecnicoAdm
+AFTER INSERT
+AS RAISERROR ('TA Inserted',10,1); 
+GO
+
+/* ------------------------------ ------ ------------------------------ */

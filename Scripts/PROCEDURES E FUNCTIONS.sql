@@ -1,4 +1,4 @@
-USE LABBD;
+/*USE LABBD;*/
 
 DROP PROCEDURE p_atualizaTextoDescritivoAta
 GO
@@ -158,3 +158,41 @@ GO
 CREATE FUNCTION f_getCursosSemConselho()
 RETURNS TABLE
 RETURN (SELECT codigo, nome FROM CURSO C WHERE NOT EXISTS (SELECT * FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = codigo));
+
+/* ------------------------------ MURIEL ------------------------------ */
+
+DROP Procedure BuscaProfessorAluno
+GO
+CREATE PROCEDURE BuscaProfessorAluno
+@cpf NVARCHAR(14)
+AS
+SELECT p.nome, p.sobrenome
+FROM Pessoa p, Estudante e, Docente d
+WHERE p.cpf_pessoa = @cpf AND e.cpf_estudante = @cpf AND d.cpf_docente = @cpf
+GO
+
+DROP PROCEDURE BuscaTAAluno
+GO
+CREATE PROCEDURE BuscaTAAluno
+@cpf NVARCHAR(14)
+AS
+SELECT p.nome, p.sobrenome
+FROM Pessoa p, Estudante e, TecnicoAdm d
+WHERE p.cpf_pessoa = @cpf AND e.cpf_estudante = @cpf AND d.cpf_tecnicoAdm = @cpf
+GO
+
+DROP PROCEDURE BuscaProfessor
+GO
+CREATE PROCEDURE BuscaProfessor
+@nome NVARCHAR(30)
+AS 
+SELECT p.nome, p.sobrenome
+FROM Pessoa p, Docente d
+WHERE p.nome = @nome AND p.cpf_pessoa = d.cpf_docente
+GO
+
+EXECUTE BuscaProfessorAluno "97119617419"
+EXECUTE BuscaTAAluno "13885350254"
+EXECUTE BuscaProfessor "Joana Isabelle"
+
+/* ------------------------------ ------ ------------------------------ */
