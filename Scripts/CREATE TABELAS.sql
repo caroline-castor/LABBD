@@ -1,10 +1,30 @@
+/*DROP TABLE Sala
+DROP TABLE TipoSala
+DROP TABLE Predio
+DROP TABLE COMUNICACOESPRESIDENCIA
+DROP TABLE DECISOESAPROVADAS
+DROP TABLE Estudante
+DROP TABLE Docente
+DROP TABLE TecnicoAdm
+DROP TABLE MEMBROSINTERVENCAO
+DROP TABLE MEMBROSPRESENTES
+DROP TABLE MEMBRO_CONSELHOCOORDENACAOCURSO
+DROP TABLE MEMBRO
+DROP TABLE Pessoa
+DROP TABLE Departamento
+DROP TABLE CentroAcademico
+DROP TABLE Ofertante
+DROP TABLE ATA
+DROP TABLE REUNIAO
+DROP TABLE CONSELHOCOORDENACAOCURSO
+DROP TABLE CURSO*/
 
 --tabela atribuida a outro membro mas precisei para realizar inserts
 CREATE TABLE CURSO(
 	codigo INT IDENTITY(1,1)PRIMARY KEY NOT NULL,
 	presencial VARCHAR(10),
 	nome VARCHAR(50),
-	campus VARCHAR(50),
+	campus VARCHAR(50)
 );
 
 CREATE TABLE CONSELHOCOORDENACAOCURSO(
@@ -26,84 +46,11 @@ CREATE TABLE REUNIAO(
 
 );
 
---tabela atribuida a outro membro mas precisei para realizar inserts
-CREATE TABLE PESSOA(
-	CPF VARCHAR(15) NOT NULL,
-	email VARCHAR(50),
-	email2 VARCHAR(50),
-	telefone VARCHAR(15),
-	telefone2 VARCHAR(15),
-	nome VARCHAR(20),
-	sobrenome VARCHAR(50),
-	PRIMARY KEY(CPF)
-);
-
-CREATE TABLE MEMBRO(
-	id_membro INT IDENTITY(1,1) NOT NULL,
-	CPF VARCHAR(15) NOT NULL,
-	portariaIdentificacao VARCHAR(50),
-	codigoCoordenacaoCurso INT,
-	sigla VARCHAR(20)
-	CONSTRAINT fk_membro_pessoa FOREIGN KEY(CPF) REFERENCES PESSOA(CPF),
-	PRIMARY KEY(CPF, id_membro)
-);
-
-Alter Table MEMBRO ADD CONSTRAINT fk_membro_conselho FOREIGN KEY(codigoCoordenacaoCurso, sigla) references CONSELHOCOORDENACAOCURSO(codigoCurso, sigla) ;
-
-CREATE TABLE MEMBRO_CONSELHOCOORDENACAOCURSO(
-	CPF VARCHAR(15),
-	id_membro INT,
-	siglaCoordenacaoCurso VARCHAR(20),
-	codigoCoordenacaoCurso INT,
-	dataPosse DATE,
-	FOREIGN KEY(CPF, id_membro) REFERENCES MEMBRO(CPF, id_membro),
-	FOREIGN KEY(codigoCoordenacaoCurso, siglaCoordenacaoCurso) REFERENCES CONSELHOCOORDENACAOCURSO(codigoCurso, sigla),
-	PRIMARY KEY(CPF, id_membro, codigoCoordenacaoCurso, siglaCoordenacaoCurso)
-);
-
-CREATE TABLE MEMBROSPRESENTES(
-	nroOrdemReuniao INT,
-	CPF VARCHAR(15),
-	id_membro INT,
-	FOREIGN KEY (nroOrdemReuniao) REFERENCES REUNIAO(nroOrdem),
-	FOREIGN KEY (CPF, id_membro) REFERENCES MEMBRO(CPF, id_membro),
-	PRIMARY KEY (nroOrdemReuniao,CPF)
-);
 CREATE TABLE ATA(
 	nroOrdemReuniao INT,
 	textoDescritivo VARCHAR(200),
 	FOREIGN KEY(nroOrdemReuniao) REFERENCES REUNIAO(nroOrdem),
 	PRIMARY KEY(nroOrdemReuniao)
-);
-
-CREATE TABLE MEMBROSINTERVENCAO(
-	id_intervencao INT IDENTITY(1,1),
-	nroOrdemReuniao INT,
-	CPF varchar(15),
-	intervencao VARCHAR(200),
-	FOREIGN KEY(nroOrdemReuniao,CPF) REFERENCES MEMBROSPRESENTES(nroOrdemReuniao,CPF),
-	PRIMARY KEY(id_intervencao,nroOrdemReuniao)
-);
-
-CREATE TABLE DECISOESAPROVADAS(
-	 id_decisao INT IDENTITY(1,1),
-	 id_intervencao INT,
-     nroOrdemReuniao INT,
-	 FOREIGN KEY (id_intervencao,nroOrdemReuniao) REFERENCES MEMBROSINTERVENCAO(id_intervencao,nroOrdemReuniao),
-	 PRIMARY KEY (nroOrdemReuniao, id_decisao, id_intervencao)
-);
-
-
-CREATE TABLE COMUNICACOESPRESIDENCIA(
-	 id_comunicacao INT IDENTITY(1,1),
-	 nroOrdemReuniao INT,
-	 comunicacao VARCHAR(50),
-	 CPF VARCHAR(15),
-	 id_membro INT,
-	 FOREIGN KEY (CPF, id_membro) REFERENCES MEMBRO(CPF, id_membro),
-	 FOREIGN KEY (nroOrdemReuniao) REFERENCES ATA(nroOrdemReuniao),
-	 PRIMARY KEY (nroOrdemReuniao,id_comunicacao)
-
 );
 
 CREATE TABLE Ofertante (
@@ -132,6 +79,161 @@ CREATE TABLE Departamento (
         REFERENCES Ofertante (sigla),
     CONSTRAINT fk_departamento_ca           FOREIGN KEY (siglaCA)
         REFERENCES CentroAcademico (siglaOfertante)
+);
+
+CREATE TABLE Pessoa(
+	cpf_pessoa			NVARCHAR(14)	NOT NULL,
+	email1				NVARCHAR(50)	NOT NULL,
+	email2				NVARCHAR(50),
+	tel1 				NVARCHAR(13)	NOT NULL,
+	tel2 				NVARCHAR(13),	
+	nome 				NVARCHAR(30)	NOT NULL,
+	sobrenome 			NVARCHAR(30)	NOT NULL,
+	dataNascimento 		DATE 			NOT NULL, 
+	rg					NVARCHAR(13)	NOT NULL,
+	sexo				NVARCHAR(20)	NOT NULL,
+	etnia 				NVARCHAR(30)	NOT NULL,
+	pai_nome 			NVARCHAR(50)	NOT NULL,
+	pai_sobrenome   	NVARCHAR(50) 	NOT NULL,
+	mae_nome 			NVARCHAR(50) 	NOT NULL,
+	mae_Sobrenome 		NVARCHAR(50) 	NOT NULL,
+	nasce_cidade 		NVARCHAR(30) 	NOT NULL,
+	nasce_UF 			NVARCHAR(30)	NOT NULL,
+	nasce_pais 			NVARCHAR(30) 	NOT NULL,
+	endereco_bairro 	NVARCHAR(30)	NOT NULL,
+	endereco_cidade 	NVARCHAR(30)	NOT NULL,
+	endereco_logradouro NVARCHAR(30),
+	endereco_numero 	NVARCHAR(30)	NOT NULL,
+	endereco_uf 		NVARCHAR(30)	NOT NULL,
+	endereco_pais 		NVARCHAR(30) 	NOT NULL,
+
+	CONSTRAINT	pk_pessoa 	PRIMARY KEY (cpf_pessoa)
+);
+
+CREATE TABLE MEMBRO(
+	id_membro INT IDENTITY(1,1) NOT NULL,
+	CPF_MEMBRO NVARCHAR(14) NOT NULL,
+	portariaIdentificacao VARCHAR(50),
+	codigoCoordenacaoCurso INT,
+	sigla VARCHAR(20)
+	CONSTRAINT fk_membro_pessoa FOREIGN KEY(CPF_MEMBRO) REFERENCES Pessoa(cpf_pessoa),
+	PRIMARY KEY(CPF_MEMBRO, id_membro)
+);
+
+Alter Table MEMBRO ADD CONSTRAINT fk_membro_conselho FOREIGN KEY(codigoCoordenacaoCurso, sigla) references CONSELHOCOORDENACAOCURSO(codigoCurso, sigla) ;
+
+CREATE TABLE MEMBRO_CONSELHOCOORDENACAOCURSO(
+	CPF_MCC NVARCHAR(14),
+	id_membro INT,
+	siglaCoordenacaoCurso VARCHAR(20),
+	codigoCoordenacaoCurso INT,
+	dataPosse DATE,
+	FOREIGN KEY(CPF_MCC, id_membro) REFERENCES MEMBRO(CPF_MEMBRO, id_membro),
+	FOREIGN KEY(codigoCoordenacaoCurso, siglaCoordenacaoCurso) REFERENCES CONSELHOCOORDENACAOCURSO(codigoCurso, sigla),
+	PRIMARY KEY(CPF_MCC, id_membro, codigoCoordenacaoCurso, siglaCoordenacaoCurso)
+);
+
+CREATE TABLE MEMBROSPRESENTES(
+	nroOrdemReuniao INT,
+	CPF_MP NVARCHAR(14),
+	id_membro INT,
+	FOREIGN KEY (nroOrdemReuniao) REFERENCES REUNIAO(nroOrdem),
+	FOREIGN KEY (CPF_MP, id_membro) REFERENCES MEMBRO(CPF_MEMBRO, id_membro),
+	PRIMARY KEY (nroOrdemReuniao,CPF_MP)
+);
+
+CREATE TABLE MEMBROSINTERVENCAO(
+	id_intervencao INT IDENTITY(1,1),
+	nroOrdemReuniao INT,
+	CPF_MI Nvarchar(14),
+	intervencao VARCHAR(200),
+	FOREIGN KEY(nroOrdemReuniao,CPF_MI) REFERENCES MEMBROSPRESENTES(nroOrdemReuniao,CPF_MP),
+	PRIMARY KEY(id_intervencao,nroOrdemReuniao)
+);
+
+CREATE TABLE TecnicoAdm(
+	cpf_tecnicoAdm	NVARCHAR(14)	NOT NULL,
+	SIAPE			NVARCHAR(20) 	NOT NULL,
+	trabalha_em		NVARCHAR(10)	NOT NULL,
+
+	CONSTRAINT 	pk_tecnicoAdm				PRIMARY KEY (cpf_tecnicoAdm),
+	CONSTRAINT  fk_tecnicoAdm_pessoa    	FOREIGN KEY (cpf_tecnicoAdm) 	REFERENCES 	Pessoa 		(cpf_pessoa),
+	CONSTRAINT	fk_tecnicoAdm_departamento	FOREIGN KEY (trabalha_em)		REFERENCES	Departamento(siglaOfertante)			
+);
+
+CREATE TABLE Docente(
+	cpf_docente 	NVARCHAR(14)	NOT NULL,
+	SIAPE			NVARCHAR(20) 	NOT NULL,
+	ligadoA			NVARCHAR(10)	NOT NULL,
+
+	CONSTRAINT 	pk_Docente					PRIMARY KEY (cpf_docente),
+	CONSTRAINT  fk_docente_pessoa	    	FOREIGN KEY (cpf_docente) 	REFERENCES 	Pessoa 		(cpf_pessoa),
+	CONSTRAINT	fk_docente_departamento		FOREIGN KEY (ligadoA)		REFERENCES	Departamento(siglaOfertante)		
+);
+
+CREATE TABLE Estudante(
+	cpf_estudante	NVARCHAR(14)	NOT NULL,
+	RA				NVARCHAR(6)		NOT NULL,
+	anoConclusaoEm 	DATE 			NOT NULL,
+	escolaEM		NVARCHAR(30)	NOT NULL,
+
+	CONSTRAINT pk_estudante			PRIMARY KEY (cpf_estudante),
+	CONSTRAINT fk_estudante_pessoa	FOREIGN KEY (cpf_estudante) REFERENCES Pessoa(cpf_pessoa)
+);
+
+CREATE TABLE DECISOESAPROVADAS(
+	 id_decisao INT IDENTITY(1,1),
+	 id_intervencao INT,
+     nroOrdemReuniao INT,
+	 FOREIGN KEY (id_intervencao,nroOrdemReuniao) REFERENCES MEMBROSINTERVENCAO(id_intervencao,nroOrdemReuniao),
+	 PRIMARY KEY (nroOrdemReuniao, id_decisao, id_intervencao)
+);
+
+
+CREATE TABLE COMUNICACOESPRESIDENCIA(
+	 id_comunicacao INT IDENTITY(1,1),
+	 nroOrdemReuniao INT,
+	 comunicacao VARCHAR(50),
+	 CPF_CE nVARCHAR(14),
+	 id_membro INT,
+	 FOREIGN KEY (CPF_CE, id_membro) REFERENCES MEMBRO(CPF_MEMBRO, id_membro),
+	 FOREIGN KEY (nroOrdemReuniao) REFERENCES ATA(nroOrdemReuniao),
+	 PRIMARY KEY (nroOrdemReuniao,id_comunicacao)
+
+);
+
+CREATE TABLE Predio
+(
+	sigla varchar(10),
+	imagem varchar(255),
+	mapaLocalizacao varchar(255),
+	gpsLat varchar(11),
+	gpsLog varchar(11),
+	descricao varchar(255),
+	intervaloSala varchar(5),
+
+	CONSTRAINT pk_predio PRIMARY KEY (sigla)
+);
+
+CREATE TABLE TipoSala
+(
+	sigla varchar(10) not null,
+	tipo varchar(255) not null
+
+	CONSTRAINT pk_tipo_sala PRIMARY KEY (sigla)
+);
+
+CREATE TABLE Sala
+(
+	sigla_predio varchar(10),
+	numero smallint not null,
+	capacidadeEfetiva smallint not null,
+	capacidade smallint not null,
+	siglaTipo varchar(10),
+
+	CONSTRAINT fk_sala_predio FOREIGN KEY (sigla_predio) REFERENCES Predio(sigla),
+	CONSTRAINT fk_sala_tiposala FOREIGN KEY (siglaTipo) REFERENCES TipoSala(sigla),
+	CONSTRAINT pk_sala PRIMARY KEY (sigla_predio, numero)
 );
 
 GO
