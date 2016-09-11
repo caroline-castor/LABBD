@@ -1,6 +1,6 @@
 <html>
 
-    <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" /> 
+    <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
 
     <head>
       <meta charset="UTF-8">
@@ -64,21 +64,21 @@
                     <li><a href="visualizarAta.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
-                   
+
                     <h3 class="link-titulo">Membros Presentes</h3>
                 <ul class="box">
                     <li><a href="cadastrarMembrosPresentesView.php">Cadastrar </a></li>
                     <li><a href="visualizarMembrosPresentes.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
-                    
+
                     <h3 class="link-titulo">Intervenção</h3>
                 <ul class="box">
                     <li><a href="cadastrarIntervencaoView.php">Cadastrar </a></li>
                     <li><a href="visualizarIntervencao.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
-                    
+
                    <h3 class="link-titulo">Decisões Aprovadas</h3>
                 <ul class="box">
                     <li><a href="cadastraDecisoesAprovadasView.php">Cadastrar </a></li>
