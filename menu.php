@@ -85,6 +85,28 @@
                     <li><a href="visualizarDecisoesAprovadas.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
+
+				<h3 class="link-titulo">Prédios</h3>
+                <ul class="box">
+                    <li><a href="cadastrarPredioView.php">Cadastrar </a></li>
+                    <li><a href="visualizarPredio.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
+
+				<h3 class="link-titulo">Tipo de Sala</h3>
+                <ul class="box">
+                    <li><a href="cadastrarTipoSalaView.php">Cadastrar </a></li>
+                    <li><a href="visualizarTipoSala.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
+
+				<h3 class="link-titulo">Sala</h3>
+                <ul class="box">
+                    <li><a href="cadastrarSalaView.php">Cadastrar </a></li>
+                    <li><a href="visualizarSala.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
+
                 <!-- mais seções -->
 
             </div> <!-- /#menu -->

@@ -242,11 +242,11 @@ GO
 
 /* SELECTS */
 
-SELECT * FROM Pessoa
+/*SELECT * FROM Pessoa
 SELECT * FROM TecnicoAdm
 SELECT * FROM Docente
 SELECT * FROM Estudante
-
+*/
 /* SELECTS VIEWS 
 
 SELECT * FROM student
@@ -255,3 +255,31 @@ SELECT * FROM docentView
 
 */
 /* -------------------- -------------------- -------------------- */
+
+GO
+
+CREATE VIEW v_Predio  
+AS   
+SELECT   	sigla			
+         , 	imagem			
+         , 	mapaLocalizacao	
+         , 	gpsLat			
+         , 	gpsLog   		
+         , 	descricao		
+		 , 	intervaloSalaMenor	
+		 , 	intervaloSalaMaior 
+FROM        
+        Predio;
+		
+CREATE VIEW v_Sala  
+AS   
+SELECT 		s.siglaPredio		AS Sigla
+		, 	s.numero			AS Numero
+		,	s.capacidadeEfetiva	AS CapacidadeE
+		,	s.capacidade		AS Capacidade
+		,	t.tipo				AS TipoSala
+FROM Sala s
+JOIN TipoSala t
+ON s.siglaTipo = t.sigla;
+
+GO

@@ -135,7 +135,6 @@ AS
 		FETCH NEXT FROM curr INTO @sigla;
 		WHILE @@FETCH_STATUS = 0
 	  BEGIN
-		print @sigla;
 			DELETE FROM Departamento WHERE siglaCA = @sigla;
 			--DELETE FROM CentroAcademico WHERE siglaOfertante = @sigla;
 			DELETE FROM Ofertante WHERE sigla = @sigla;
@@ -175,3 +174,78 @@ AS RAISERROR ('TA Inserted',10,1);
 GO
 
 /* ------------------------------ ------ ------------------------------ */
+
+
+DROP TRIGGER t_deleteof_tiposala;
+GO
+CREATE TRIGGER t_deleteof_tiposala ON TIPOSALA INSTEAD OF DELETE
+AS
+	BEGIN
+		DECLARE @sigla NVARCHAR(10);
+		DECLARE curr CURSOR FOR SELECT sigla FROM deleted;
+
+		OPEN curr;
+		FETCH NEXT FROM curr INTO @sigla;
+	WHILE @@FETCH_STATUS = 0
+	  BEGIN
+			DELETE FROM SALA WHERE siglaTipo = @sigla;
+			DELETE FROM TIPOSALA WHERE sigla = @sigla;
+
+			FETCH NEXT FROM curr INTO @sigla;
+	  END;
+
+		CLOSE curr;
+		DEALLOCATE curr;
+	END;
+GO
+
+DROP TRIGGER t_deleteof_predio;
+GO
+CREATE TRIGGER t_deleteof_predio ON PREDIO INSTEAD OF DELETE
+AS
+	BEGIN
+		DECLARE @sigla NVARCHAR(10);
+		DECLARE curr CURSOR FOR SELECT sigla FROM deleted;
+
+		OPEN curr;
+		FETCH NEXT FROM curr INTO @sigla;
+		WHILE @@FETCH_STATUS = 0
+	  BEGIN
+			DELETE FROM SALA WHERE siglaPredio = @sigla;
+			DELETE FROM PREDIO WHERE sigla = @sigla;
+
+			FETCH NEXT FROM curr INTO @sigla;
+	  END;
+
+		CLOSE curr;
+		DEALLOCATE curr;
+	END;
+GO
+
+DROP TRIGGER t_insertof_sala;
+GO
+CREATE TRIGGER t_insertof_sala
+ON SALA
+FOR INSERT
+AS
+BEGIN
+	DECLARE
+	@NumeroSala	smallint,
+	@Predio varchar(10),
+	@IntMenor smallint,
+	@IntMaior smallint
+
+	SELECT @NumeroSala = numero, @Predio = siglaPredio FROM INSERTED
+	SELECT @IntMenor = intervaloSalaMenor, @IntMaior = intervaloSalaMaior FROM PREDIO WHERE sigla = @Predio
+
+	IF @NumeroSala > @IntMaior
+		UPDATE PREDIO SET intervaloSalaMaior = @NumeroSala
+		WHERE sigla = @Predio
+
+
+	IF @NumeroSala < @IntMenor
+		UPDATE PREDIO SET intervaloSalaMenor = @NumeroSala
+		WHERE sigla = @Predio
+
+END
+GO

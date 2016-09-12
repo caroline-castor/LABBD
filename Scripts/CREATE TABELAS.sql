@@ -237,3 +237,36 @@ CREATE TABLE Sala
 );
 
 GO
+
+CREATE TABLE PREDIO
+(
+sigla varchar(10),
+imagem varchar(255),
+mapaLocalizacao varchar(255),
+gpsLat varchar(11),
+gpsLog varchar(11),
+descricao varchar(255),
+intervaloSalaMenor smallint,
+intervaloSalaMaior smallint,
+CONSTRAINT pk_predio PRIMARY KEY (sigla)
+);
+
+CREATE TABLE TIPOSALA
+(
+sigla varchar(10) not null,
+tipo varchar(255) not null,
+CONSTRAINT pk_tipoSala PRIMARY KEY (sigla)
+);
+
+CREATE TABLE SALA
+(
+siglaPredio varchar(10),
+numero smallint not null,
+capacidadeEfetiva smallint not null,
+capacidade smallint not null,
+siglaTipo varchar(10),
+CONSTRAINT fk_sala_predio FOREIGN KEY (siglaPredio) REFERENCES Predio(sigla),
+CONSTRAINT fk_sala_tiposala FOREIGN KEY (siglaTipo) REFERENCES TipoSala(sigla),
+CONSTRAINT pk_sala PRIMARY KEY (siglaPredio, numero)
+);
+GO
