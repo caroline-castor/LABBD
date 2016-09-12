@@ -4,7 +4,7 @@
 // Armazena a query de insercao
 $tsql = "INSERT INTO SALA(siglaPredio,numero,capacidadeEfetiva,capacidade,siglaTipo) VALUES (?,?,?,?,?)";
 
-$parameters = [$_POST['siglaPredio'],$_POST['numero'],$_POST['capacidadeEfetiva'],$_POST['capacidade'],$_POST['siglaTipo']];
+$parameters = [$_POST['escolhaSiglaPredio'],$_POST['textoNumSala'],$_POST['textoCapacidadeEfetiva'],$_POST['textoCapacidade'],$_POST['textoSiglaTipoSala']];
 
 //executa a query tsql, resultado fica em stmt
 $stmt = sqlsrv_query($conn,$tsql,$parameters);

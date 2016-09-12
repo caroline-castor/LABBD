@@ -20,51 +20,51 @@ and open the template in the editor.
                 <form action="cadastrarPredio.php" autocomplete="off" class="form-control" name="cadastroPredio" method="post">
                     <table align="center">
                         <tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Sigla:</td>    
+                            <td nowrap="nowrap" valign="top">Sigla:</td>
                             <td>
-                                <textarea name="textoSigla" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoSigla" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Imagem(link):</td>    
+                            <td nowrap="nowrap" valign="top">Imagem(link):</td>
                             <td>
-                                <textarea name="linkImagem" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="linkImagem" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Mapa(link):</td>    
+                            <td nowrap="nowrap" valign="top">Mapa(link):</td>
                             <td>
-                                <textarea name="linkMapa" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="linkMapa" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Latitude:</td>    
+                            <td nowrap="nowrap" valign="top">Latitude:</td>
                             <td>
-                                <textarea name="textoLatitude" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoLatitude" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Longitude:</td>    
+                            <td nowrap="nowrap" valign="top">Longitude:</td>
                             <td>
-                                <textarea name="textoLongitude" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoLongitude" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Descrição:</td>    
+                            <td nowrap="nowrap" valign="top">Descrição:</td>
                             <td>
-                                <textarea name="textoDescricao" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoDescricao" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Menor Sala:</td>    
+                            <td nowrap="nowrap" valign="top">Menor Sala:</td>
                             <td>
-                                <textarea name="textoMenorSala" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoMenorSala" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Maior Sala:</td>    
+                            <td nowrap="nowrap" valign="top">Maior Sala:</td>
                             <td>
-                                <textarea name="textoMaiorSala" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoMaiorSala" required cols="100" maxlength="1000"></textarea>
                             </td>
                         </tr>
 
@@ -77,5 +77,3 @@ and open the template in the editor.
         </div>
     </body>
 </html>
-
-

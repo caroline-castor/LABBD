@@ -9,11 +9,11 @@ $stmt = sqlsrv_query($conn, $tsql);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="Estilo/style.css">
-        
+
                <title>Tipos de Sala</title>
     </head>
 
-    
+
     <body>
 
         <div id="tudo">
@@ -28,10 +28,10 @@ $stmt = sqlsrv_query($conn, $tsql);
                     <?php while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) { ?>
                         <tr>
                             <td><?php echo $row['sigla']; ?>&nbsp; </td>
-							<td><?php echo $row['tipo']; ?>&nbsp; </td
+							<td><?php echo $row['tipo']; ?>&nbsp; </td>
 
 
-                           
+
                             <td class="actions">
                                 <a class="btn btn-danger btn-xs" href="excluiTipoSala.php?sigla=<?php echo $row['sigla'];?>">Excluir</a>
                             </td>
@@ -54,6 +54,3 @@ $stmt = sqlsrv_query($conn, $tsql);
 <?php
 sqlsrv_close($conn);
 ?>
-
-
-

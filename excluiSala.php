@@ -1,7 +1,7 @@
 <?php require_once 'connectToSQLServer.php';
 
-$sigla = $_GET["Sigla"];
-$numero = $_GET["Numero"];
+$sigla = $_GET["sigla"];
+$numero = $_GET["numero"];
 // Armazena a query de insercao
 $tsql = "DELETE FROM SALA WHERE siglaPredio='".$sigla."' and numero='".$numero."'";
 
@@ -9,9 +9,9 @@ $tsql = "DELETE FROM SALA WHERE siglaPredio='".$sigla."' and numero='".$numero."
 $stmt = sqlsrv_query($conn,$tsql);
 //verifica se o retorno é falso
 if( $stmt === false ){
-echo "Statement could not be executed.\n";
- die( print_r( sqlsrv_errors(), true));
-} 
+  echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarSala.php">';
+   die();
+}
 
 
 //se nenhum erro ocorrer, redireciona a pagina
@@ -27,5 +27,3 @@ sqlsrv_close( $conn);
 
 
 ?>
-
-

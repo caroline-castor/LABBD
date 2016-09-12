@@ -20,15 +20,15 @@ and open the template in the editor.
                 <form action="cadastrarTipoSala.php" autocomplete="off" class="form-control" name="cadastroTipoSala" method="post">
                     <table align="center">
                         <tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Sigla:</td>    
+                            <td nowrap="nowrap" valign="top">Sigla:</td>
                             <td>
-                                <textarea name="textoSigla" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoSigla" required ></textarea>
                             </td>
                         </tr>
 						<tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Tipo:</td>    
+                            <td nowrap="nowrap" valign="top">Tipo:</td>
                             <td>
-                                <textarea name="textoTipo" required rows="25" cols="100" maxlength="1000"></textarea>
+                                <textarea name="textoTipo" required ></textarea>
                             </td>
                         </tr>
 
@@ -41,5 +41,3 @@ and open the template in the editor.
         </div>
     </body>
 </html>
-
-

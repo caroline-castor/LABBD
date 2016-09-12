@@ -8,9 +8,10 @@ $tsql = "DELETE FROM PREDIO WHERE sigla='".$sigla."'";
 $stmt = sqlsrv_query($conn,$tsql);
 //verifica se o retorno é falso
 if( $stmt === false ){
-echo "Statement could not be executed.\n";
- die( print_r( sqlsrv_errors(), true));
-} 
+  //se nenhum erro ocorrer, redireciona a pagina
+  echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarPredio.php">';
+   die();
+}
 
 
 //se nenhum erro ocorrer, redireciona a pagina
@@ -26,5 +27,3 @@ sqlsrv_close( $conn);
 
 
 ?>
-
-

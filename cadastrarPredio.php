@@ -2,9 +2,9 @@
 
 
 // Armazena a query de insercao
-$tsql = "INSERT INTO PREDIO VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$tsql = "INSERT INTO PREDIO VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
-$parameters = [$_POST['sigla'],$_POST['imagem'],$_POST['mapaLocalizacao'],$_POST['gpsLat'],$_POST['gpsLog'],$_POST['descricao'],$_POST['intervaloSalaMenor'], $_POST['intervaloSalaMaior']];
+$parameters = [$_POST['textoSigla'],$_POST['linkImagem'],$_POST['linkMapa'],$_POST['textoLatitude'],$_POST['textoLongitude'],$_POST['textoDescricao'],$_POST['textoMenorSala'], $_POST['textoMaiorSala']];
 
 //executa a query tsql, resultado fica em stmt
 $stmt = sqlsrv_query($conn,$tsql,$parameters);
@@ -12,7 +12,7 @@ $stmt = sqlsrv_query($conn,$tsql,$parameters);
 if( $stmt === false ){
 echo "Statement could not be executed.\n";
  die( print_r( sqlsrv_errors(), true));
-} 
+}
 
 
 //se nenhum erro ocorrer, redireciona a pagina
@@ -27,5 +27,3 @@ sqlsrv_close( $conn);
 
 
 ?>
-
-

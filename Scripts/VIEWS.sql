@@ -242,11 +242,11 @@ GO
 
 /* SELECTS */
 
-SELECT * FROM Pessoa
+/*SELECT * FROM Pessoa
 SELECT * FROM TecnicoAdm
 SELECT * FROM Docente
 SELECT * FROM Estudante
-
+*/
 /* SELECTS VIEWS 
 
 SELECT * FROM student
