@@ -22,6 +22,7 @@
         		padding: 20px; 
         		margin: 20px;
         	}
+            
         </style>
     </head>
     <link rel="stylesheet" type="text/css" href="Estilo/style.css">
@@ -44,7 +45,7 @@
                 <p class="text">
                 	Para verificar o desempenho dos cursos avaliados pelo ENADE, selecione o ano em que o exame ocorreu.
                 </p><br/><br/>
-                    <form action="processaEnade.php" method="POST">
+                    <form action="visualizarConceitoEnade.php" method="POST">
                     <label for="ano_enade" id="ano_enade" name="ano_enade">
                 		Selecione o ano em que o exame foi realizado:
 	                </label>
@@ -56,8 +57,18 @@
 	                	<option value="2014">2014</option>
 	                	<option value="2015">2015</option>
 	                </select>
-	                <input type="submit" value="Pesquisar"/>
-	                </form>
+	                <input type="submit" value="Buscar"/>
+	                </form><br/><br/><br/>
+
+                   <p class="text">
+                    Para consultar o desempenho individual entre com o CPF:
+                    <form action="visualizarNotaEnade.php" method="POST">
+                        <label for="cpf_enade" id="cpf_enade">
+                            CPF:
+                        </label>
+                        <input type="text" name="cpf_enade">
+                        <input type="submit" value="Buscar">
+                    </form>
                 </div><br/>
             </div>
 
