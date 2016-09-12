@@ -73,7 +73,7 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['endereco_uf']; ?>&nbsp; </td>
                             <td><?php echo $row['endereco_pais']; ?>&nbsp; </td>
                             <td class="actions">
-                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Excluir</button>
+                                <a class="btn btn-danger btn-xs" href="excluiPessoa.php?cpf_pessoa=<?php echo $row['cpf_pessoa'];?>">Excluir</a>
                             </td>
                         </tr>
 <?php } ?>
