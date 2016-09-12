@@ -225,3 +225,25 @@ INSERT INTO Departamento VALUES
 ('DPsi', 'CECH', '', '-21.988400,-47.879933');
 
 GO
+
+INSERT INTO PREDIO VALUES
+('AT1', '/images/at1.jpg', 'google.com.br/maps/', '-21.987959', '-47.879231', 'Aulas Teoricas 1', 1, 19),
+('AT2', '/images/at2.jpg', 'google.com.br/maps/', '-21.987644', '-47.879145', 'Aulas Teoricas 2', 20, 39),
+('AT3', '/images/at3.jpg', 'google.com.br/maps/', '-21.982078', '-47.881303', 'Aulas Teoricas 3', 40, 59),
+('AT4', '/images/at4.jpg', 'google.com.br/maps/', '-21.982300', '-47.884003', 'Aulas Teoricas 4', 60, 79),
+('AT5', '/images/at5.jpg', 'google.com.br/maps/', '-21.982164', '-47.879320', 'Aulas Teoricas 5', 80, 99);
+
+INSERT INTO TIPOSALA VALUES
+('LabQ','Laboratorio de Quimica'),
+('LabM','Laboratorio de Mecanica'),
+('LabF','Laboratorio de Fisica'),
+('Comp','Sala de Computadores'),
+('LabMat','Laboratorio de Materiais');
+
+INSERT INTO SALA VALUES
+('AT1', 10, 60, 30, 'LabQ'),
+('AT2', 20, 60, 30, 'LabF'),
+('AT3', 43, 30, 15, 'LabM'),
+('AT4', 69, 40, 20, 'Comp'),
+('AT5', 96, 15, 10, 'LabMat');
+GO
