@@ -13,24 +13,6 @@ $stmt = sqlsrv_query($conn, $tsql);
     <link rel="stylesheet" type="text/css" href="Estilo/style.css">
     <body>
 
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h2> Deseja realmente excluir este item?</h2>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Sim</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="tudo">
             <?php require_once 'cabecalho.php'; ?>
             <div id="conteudo">
@@ -51,8 +33,9 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['siglaCurso'] . ' - ' . $row['nomeCurso']; ?>&nbsp; </td>
 
 
+                            
                             <td class="actions">
-                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Excluir</button>
+                                <a class="btn btn-danger btn-xs" href="excluiMembro.php?id_membro=<?php echo $row['id_membro'];?>">Excluir</a>
                             </td>
 
                         </tr>

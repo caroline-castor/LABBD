@@ -1,8 +1,8 @@
 <?php require_once 'connectToSQLServer.php';
 
-$id_membro = $_GET["id_membro"];
+$codigo = $_GET["codigo"];
 // Armazena a query de insercao
-$tsql = "DELETE FROM MEMBROSPRESENTES WHERE id_membro=".$id_membro;
+$tsql = "DELETE FROM CURSO WHERE codigo=".$codigo;
 
 //executa a query tsql, resultado fica em stmt
 $stmt = sqlsrv_query($conn,$tsql);
@@ -14,7 +14,7 @@ echo "Statement could not be executed.\n";
 
 
 //se nenhum erro ocorrer, redireciona a pagina
-echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarMembrosPresentes.php">';
+echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarCurso.php">';
 
 /* Free statement and connection resources. */
 sqlsrv_free_stmt( $stmt);
@@ -26,4 +26,6 @@ sqlsrv_close( $conn);
 
 
 ?>
+
+
 

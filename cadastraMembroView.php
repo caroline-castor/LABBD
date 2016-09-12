@@ -21,7 +21,17 @@ and open the template in the editor.
             <table align="center">
             <tr valign="baseline">    
             <td nowrap="nowrap" align="right">CPF:</td>
-            <td><input type="text" required name="cpf" value="" /></td>
+            <td><select name="selecionaPessoa" required>
+            <?php require_once 'connectToSQLServer.php';
+            $tsql = "SELECT cpf_pessoa,nome,sobrenome FROM PESSOA  WHERE cpf_pessoa NOT IN (SELECT CPF FROM MEMBRO)";
+            $stmt = sqlsrv_query($conn, $tsql);
+            
+            while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
+                echo "<option value='". $row['cpf_pessoa']."'>".$row['cpf_pessoa']." - ".$row['nome']." ".$row['sobrenome'].'</option>';
+            }    
+            ?>
+            </select>  
+            </td>
             </tr>
             <tr valign="baseline">
             <td nowrap="nowrap" align="right">Portaria de Identificação:</td>    

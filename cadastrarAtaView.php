@@ -19,7 +19,7 @@ and open the template in the editor.
                 <h1> Cadastrar Ata </h1>
                 <form action="cadastrarAta.php" autocomplete="off" class="form-control" name="cadastroAta" method="post">
                     <table align="center">
-                        <tr valign="baseline">
+                        <tr valign="baseline">    
                             <td nowrap="nowrap" align="right">Reunião:</td>
                             <td><select name="selecionaReuniaoSemAta" required>
                                     <?php
@@ -31,14 +31,14 @@ and open the template in the editor.
                                         echo "<option value='" . $row['nroOrdem'] . "'>" . $row['nroOrdem'] . " - " . $row['pauta'] . "-" . $row['siglaCoordenacaoCurso'] . "-" . $row['nomeCurso'] . '</option>';
                                     }
                                     }else{
-                                       echo "<option value=''>Nenhuma reunião sem ata encontrada</option>";
+                                       echo "<option value=''>Nenhuma reunião sem ata encontrada</option>"; 
                                     }
                                     ?>
-                                  </select>
+                                </select>  
                             </td>
                         </tr>
                         <tr valign="baseline">
-                            <td nowrap="nowrap" valign="top">Ata:</td>
+                            <td nowrap="nowrap" valign="top">Ata:</td>    
                             <td>
                                 <textarea name="textoDescritivo" required rows="25" cols="100" maxlength="1000"></textarea>
                             </td>
@@ -53,3 +53,5 @@ and open the template in the editor.
         </div>
     </body>
 </html>
+
+

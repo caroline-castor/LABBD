@@ -38,7 +38,7 @@ $stmt = sqlsrv_query($conn, $tsql);
 
 
                             <td class="actions">
-                                <a class="btn btn-danger btn-xs" href="excluiMembrosPresentes.php?cpf=<?php echo $row['CPF'];?>">Excluir</a>
+                                <a class="btn btn-danger btn-xs" href="excluiMembrosPresentes.php?id_membro=<?php echo $row['id_membro'];?>">Excluir</a>
                             </td>
                         </tr>
 <?php } ?>

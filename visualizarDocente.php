@@ -8,7 +8,7 @@ $stmt = sqlsrv_query($conn, $tsql);
 <html>
     <head>
 
-        <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" /> 
+        <meta http-equiv="content-Type" content="text/html; charset=UTF-8" /> 
       
         <title>Docente</title>
     </head>

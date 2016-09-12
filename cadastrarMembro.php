@@ -17,7 +17,7 @@ $sigla=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
 $codigoCurso = $_POST['selecionaCurso'];
 
-$parameters = [$_POST['cpf'],$_POST['portariaIdentificacao'], $codigoCurso,$sigla['sigla']];
+$parameters = [$_POST['selecionaPessoa'],$_POST['portariaIdentificacao'], $codigoCurso,$sigla['sigla']];
 
 //executa a tsql2
 $stmt2 = sqlsrv_query($conn, $tsql2, $parameters);

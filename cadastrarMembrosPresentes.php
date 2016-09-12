@@ -30,9 +30,10 @@ for ($i = 0; $i < count($membros); $i++) {
     if ($stmt === false) {
    
 
-        //die( print_r( sqlsrv_errors(), true));
+        die( print_r( sqlsrv_errors(), true));
     }
 
+}
 
 //se nenhum erro ocorrer, redireciona a pagina
 echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarMembrosPresentes.php">';
@@ -40,5 +41,5 @@ echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarMembrosPresentes.ph
     /* Free statement and connection resources. */
 
     sqlsrv_close($conn);
-}
+
 ?>

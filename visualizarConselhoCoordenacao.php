@@ -1,7 +1,7 @@
 <?php
 require_once 'connectToSQLServer.php';
 
-$tsql = "SELECT CC.sigla, C.nome FROM CONSELHOCOORDENACAOCURSO CC, CURSO C WHERE C.codigo = CC.codigoCurso";
+$tsql = "SELECT CC.sigla, C.nome, CC.codigoCurso FROM CONSELHOCOORDENACAOCURSO CC, CURSO C WHERE C.codigo = CC.codigoCurso";
 $stmt = sqlsrv_query($conn, $tsql);
 ?>
 
@@ -48,10 +48,10 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['sigla']; ?>&nbsp; </td>
                             <td><?php echo $row['nome']; ?>&nbsp; </td>
 
+                            
                             <td class="actions">
-                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Excluir</button>
+                                <a class="btn btn-danger btn-xs" href="excluiConselhoCoordCurso.php?codigoCurso=<?php echo $row['codigoCurso'];?>">Excluir</a>
                             </td>
-
                         </tr>
 <?php } ?>
 
