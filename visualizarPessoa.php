@@ -14,24 +14,7 @@ $stmt = sqlsrv_query($conn, $tsql);
     </head>
     <link rel="stylesheet" type="text/css" href="Estilo/style.css">
     <body>
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h2> Deseja realmente excluir este item?</h2>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Sim</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <div id="tudo">
 <?php require_once 'cabecalho.php'; ?>
             <div id="conteudo">
@@ -68,11 +51,11 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['cpf_pessoa']; ?>&nbsp; </td>
                             <td><?php echo $row['nome']; ?>&nbsp; </td>
                             <td><?php echo $row['sobrenome']; ?>&nbsp; </td>
-                            <td><?php echo $row['email']; ?>&nbsp; </td>
+                            <td><?php echo $row['email1']; ?>&nbsp; </td>
                             <td><?php echo $row['email2']; ?>&nbsp; </td>
                             <td><?php echo $row['tel1']; ?>&nbsp; </td>
                             <td><?php echo $row['tel2']; ?>&nbsp; </td>
-                            <td><?php echo $row['dataNascimento']; ?>&nbsp; </td>
+                            <td><?php echo date_format($row['dataNascimento'],'d/m/Y'); ?>&nbsp; </td>
                             <td><?php echo $row['rg']; ?>&nbsp; </td>
                             <td><?php echo $row['sexo']; ?>&nbsp; </td
                             <td><?php echo $row['etnia']; ?>&nbsp; </td>
