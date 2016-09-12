@@ -27,7 +27,7 @@ and open the template in the editor.
                         </tr>
                         <tr valign="baseline">
                             <td nowrap="nowrap" align="right">CPF:</td>
-                            <td><input type="text" required name="cpf" value="" /></td>
+                            <td><input type="text" required name="cpf_pessoa" value="" /></td>
                         </tr>
                         <tr valign="baseline">
                             <td nowrap="nowrap" align="right">Email:</td>
