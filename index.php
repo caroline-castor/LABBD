@@ -9,7 +9,7 @@
 		
            
             <div id="conteudo">
-				<h1> Menu Lateral <---- </h1>
+				<h1> Acesse o menu lateral para consultar, inserir e modificar </h1>
             </div>
     </body>
 </html>
