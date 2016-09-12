@@ -1,4 +1,8 @@
-/*DROP TABLE Sala
+/*
+DROP TABLE ENADE_realizado
+DROP TABLE ENADE_avalia
+DROP TABLE ENADE
+DROP TABLE Sala
 DROP TABLE TipoSala
 DROP TABLE Predio
 DROP TABLE COMUNICACOESPRESIDENCIA
@@ -191,6 +195,77 @@ CREATE TABLE COMUNICACOESPRESIDENCIA(
 	 PRIMARY KEY (nroOrdemReuniao,id_comunicacao)
 
 );
+
+
+CREATE TABLE Predio
+(
+	sigla varchar(10),
+	imagem varchar(255),
+	mapaLocalizacao varchar(255),
+	gpsLat varchar(11),
+	gpsLog varchar(11),
+	descricao varchar(255),
+	intervaloSala varchar(5),
+
+	CONSTRAINT pk_predio PRIMARY KEY (sigla)
+);
+
+CREATE TABLE TipoSala
+(
+	sigla varchar(10) not null,
+	tipo varchar(255) not null
+
+	CONSTRAINT pk_tipo_sala PRIMARY KEY (sigla)
+);
+
+CREATE TABLE Sala
+(
+	sigla_predio varchar(10),
+	numero smallint not null,
+	capacidadeEfetiva smallint not null,
+	capacidade smallint not null,
+	siglaTipo varchar(10),
+
+	CONSTRAINT fk_sala_predio FOREIGN KEY (sigla_predio) REFERENCES Predio(sigla),
+	CONSTRAINT fk_sala_tiposala FOREIGN KEY (siglaTipo) REFERENCES TipoSala(sigla),
+	CONSTRAINT pk_sala PRIMARY KEY (sigla_predio, numero)
+);
+
+CREATE TABLE ENADE(
+	ano int not null primary key,
+	periodo int not null
+);
+
+CREATE TABLE ENADE_avalia(
+	ano int not null,
+	conceito int not null, 
+	codigo int not null,
+
+	CONSTRAINT fk_enade FOREIGN KEY(ano)
+	REFERENCES ENADE(ano),
+
+	CONSTRAINT fk_enade_curso FOREIGN KEY(codigo) 
+	REFERENCES CURSO(codigo),
+
+	CONSTRAINT pk_enade_avalia PRIMARY KEY(ano, codigo)
+);
+
+CREATE TABLE ENADE_realizado(
+	ano int not null,
+	cpf_estudante nvarchar(14) not null,
+	data date,
+	nota float not null,
+	
+	constraint fk_enadeR foreign key(ano)
+	references ENADE(ano),
+
+	constraint fk_estudante_enade foreign key(cpf_estudante)
+	references Estudante(cpf_estudante)
+
+	constraint pk_enade_realizado primary key(cpf_estudante, nota)
+);
+
+GO
 
 
 CREATE TABLE PREDIO

@@ -246,4 +246,33 @@ INSERT INTO SALA VALUES
 ('AT3', 43, 30, 15, 'LabM'),
 ('AT4', 69, 40, 20, 'Comp'),
 ('AT5', 96, 15, 10, 'LabMat');
+
+GO
+
+/* ------- Enade ------- */
+/*Nos inserts da tabela Enade_realizado utilizei os dados de estudantes (cpf) criados pelo Muriel*/
+
+INSERT INTO ENADE VALUES
+(2011, 3),
+(2012, 3),
+(2013, 3),
+(2014, 3),
+(2015, 3);
+
+INSERT INTO ENADE_avalia VALUES
+(2011, 5, 1),
+(2011, 5, 2),
+(2011, 4, 3),
+(2012, 4, 4),
+(2012, 5, 5),
+(2014, 5, 1),
+(2014, 5, 2);
+
+INSERT INTO ENADE_realizado VALUES
+(2011, '13885350254', '09/10/2011', 7.5),
+(2012, '97119617419', '12/09/2012', 9.7),
+(2013, '70033642630', '20/10/2013', 5.7),
+(2013, '68739747220', '20/10/2013', 8.0),
+(2014, '85872499086', '16/09/2014', 7.8);
+
 GO
