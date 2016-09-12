@@ -260,7 +260,7 @@ CREATE TABLE ENADE_realizado(
 	references ENADE(ano),
 
 	constraint fk_estudante_enade foreign key(cpf_estudante)
-	references Estudante(cpf_estudante)
+	references Estudante(cpf_estudante),
 
 	constraint pk_enade_realizado primary key(cpf_estudante, nota)
 );
