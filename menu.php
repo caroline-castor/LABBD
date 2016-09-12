@@ -106,6 +106,14 @@
                     <li><a href="visualizarSala.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
+                
+                
+                  <h3 class="link-titulo">Conceito ENADE</h3>
+                <ul class="box">
+                    <li><a href="cadastrarEnadeView.php">Cadastrar </a></li>
+                    <li><a href="visualizarEnade.php">Visualizar </a></li>
+                    <!-- mais links -->
+                </ul>
 
                 <!-- mais seções -->
 
