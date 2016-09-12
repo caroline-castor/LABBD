@@ -26,7 +26,7 @@ and open the template in the editor.
             
             <td><select name="selecionaIntervencao">
             <?php require_once 'connectToSQLServer.php';
-            $tsql = "SELECT * FROM v_membrosIntervencao WHERE nroOrdemReuniao=".$_POST['selectReuniao'];
+            $tsql = "SELECT * FROM v_membrosIntervencao WHERE nroOrdemReuniao=".$_POST['selectReuniao']." AND id_intervencao NOT IN (SELECT id_intervencao FROM DECISOESAPROVADAS)";
             $stmt = sqlsrv_query($conn, $tsql);
             
             while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
