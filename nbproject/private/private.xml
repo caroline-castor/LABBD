@@ -3,7 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/LABBD/visualizarEstudante.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastrarPessoa.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/excluiPessoa.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastrarIntervencaoView2.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/visualizarMembro.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastrarMembro.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastrarIntervencaoView.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/visualizarMembrosPresentes.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastrarReuniaoView.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastraDecisoesAprovadasView2.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastraPessoaView.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/excluiMembro.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/excluiCurso.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/visualizarPessoa.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/visualizarCurso.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/cadastraMembroView.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/excluiAta.php</file>
+            <file>file:/C:/xampp/htdocs/novo/LABBD/index.php</file>
         </group>
     </open-files>
 </project-private>
