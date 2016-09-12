@@ -30,7 +30,7 @@ and open the template in the editor.
             $stmt = sqlsrv_query($conn, $tsql);
             
             while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
-                echo "<option value='". $row['id_intervencao']."'>".$row['id_intervencao']." - ".$row['intervencao'].'</option>';
+                echo "<option value='". $row['id_intervencao']."'>"."Intervenção nro: ".$row['id_intervencao']." - Intervenção: ".$row['intervencao']." - Membro: ".$row['nome']." ".$row['sobrenome'].'</option>';
             }    
             
            
