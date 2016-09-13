@@ -212,24 +212,24 @@ GO
 	AS
 	BEGIN
 		DECLARE @CPF NVARCHAR(14);
-		DECLARE curr CURSOR FOR SELECT CPF FROM deleted;
+		DECLARE curr CURSOR FOR SELECT cpf_pessoa FROM deleted;
 
 		OPEN curr;
-		FETCH NEXT FROM curr INTO @cpf_pessoa;
-		WHILE @@FETCH_STATUS = 0;
+		FETCH NEXT FROM curr INTO @CPF;
+		WHILE @@FETCH_STATUS = 0
 		BEGIN
-			print @CPF;
-			DELETE FROM Docente WHERE cpf_docente = @CPF
-			DELETE FROM TecnicoAdm WHERE cpf_tecnicoAdm = @CPF
-			DELETE FROM Estudante WHERE cpf_estudante = @CPF
-			DELETE FROM MEMBRO WHERE CPF = @CPF
-			DELETE FROM PESSOA WHERE cpf_pessoa = @CPF
+				DELETE FROM Docente WHERE cpf_docente = @CPF
+				DELETE FROM TecnicoAdm WHERE cpf_tecnicoAdm = @CPF
+				DELETE FROM Estudante WHERE cpf_estudante = @CPF
+				DELETE FROM MEMBRO WHERE CPF = @CPF
+				DELETE FROM PESSOA WHERE cpf_pessoa = @CPF
 
-			FETCH NEXT FROM curr INTO @CPF;
-	END;
+				FETCH NEXT FROM curr INTO @CPF;
+		END;
 		CLOSE curr;
 		DEALLOCATE curr;
-	GO
+	END;
+GO
 
 DROP TRIGGER t_deleteof_departamento
 GO
