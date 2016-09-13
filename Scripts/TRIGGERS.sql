@@ -1,3 +1,4 @@
+---- CAROLINE -------
 DROP TRIGGER t_insertof_membrosPresentes
 GO
 CREATE TRIGGER t_insertof_membrosPresentes ON MEMBROSPRESENTES INSTEAD OF INSERT
@@ -230,6 +231,8 @@ GO
 		DEALLOCATE curr;
 	END;
 GO
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TRIGGER t_deleteof_departamento
 GO
