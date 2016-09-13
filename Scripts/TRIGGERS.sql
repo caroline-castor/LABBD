@@ -9,18 +9,18 @@ AS
 			@id_membro INT,
 			@ocorrenciaMembro INT,
 			@ocorrenciaReuniaoConselho INT
-			
+
 		SELECT @nroOrdem= nroOrdemReuniao, @cpf = CPF, @id_membro= id_membro FROM inserted
 		SET @ocorrenciaReuniaoConselho = (SELECT COUNT(DISTINCT codigoCoordenacaoCurso) FROM v_visualizaReuniao WHERE codigoCoordenacaoCurso IN(SELECT codigoCoordenacaoCurso FROM v_visualizaMembro WHERE CPF=@cpf))
 			 IF @ocorrenciaReuniaoConselho > 0
 				BEGIN
 				  INSERT INTO MEMBROSPRESENTES(nroOrdemReuniao,CPF,id_membro) VALUES (@nroOrdem, @cpf, @id_membro)
 				END;
-			
+
 		ELSE
 			RAISERROR('Membro não faz parte do conselho que organizou a reunião', 50001, 1)
-			
-			
+
+
 	END;
 GO
 
@@ -34,10 +34,10 @@ AS
 			@id_decisao INT,
 			@id_intervencao INT,
 			@nroOrdemReuniao INT
-	
+
 		SELECT @id_decisao= id_decisao, @id_intervencao = id_intervencao,
 		 @nroOrdemReuniao= nroOrdemReuniao FROM deleted
-		DELETE FROM DECISOESAPROVADAS WHERE id_decisao = @id_decisao	
+		DELETE FROM DECISOESAPROVADAS WHERE id_decisao = @id_decisao
 	END;
 GO
 
@@ -52,13 +52,13 @@ AS
 			@CPF VARCHAR(15),
 			@intervencao VARCHAR(200),
 			@id_decisao INT
-	
+
 		 SELECT @id_intervencao = id_intervencao,
 		 @nroOrdemReuniao= nroOrdemReuniao, @CPF = CPF, @intervencao = intervencao FROM deleted
 		 SET @id_decisao = (SELECT id_decisao FROM DECISOESAPROVADAS WHERE id_intervencao = @id_intervencao)
-	     DELETE FROM DECISOESAPROVADAS WHERE  id_decisao= @id_decisao	  
-		 DELETE FROM MEMBROSINTERVENCAO WHERE id_intervencao = @id_intervencao	
-		
+	     DELETE FROM DECISOESAPROVADAS WHERE  id_decisao= @id_decisao
+		 DELETE FROM MEMBROSINTERVENCAO WHERE id_intervencao = @id_intervencao
+
 	END;
 GO
 
@@ -84,7 +84,7 @@ AS
 			CLOSE i_cursor
 			DEALLOCATE i_cursor
 			DELETE FROM MEMBROSPRESENTES WHERE id_membro = @id_membro
-				
+
 		END;
 GO
 
@@ -94,13 +94,13 @@ CREATE TRIGGER t_deleteof_ata ON ATA INSTEAD OF DELETE
 AS
 	BEGIN
 		DECLARE
-			
+
 			@nroOrdemReuniao INT
-			
+
 		SELECT @nroOrdemReuniao= nroOrdemReuniao FROM deleted
 		DELETE FROM COMUNICACOESPRESIDENCIA WHERE @nroOrdemReuniao = nroOrdemReuniao
 		DELETE FROM ATA WHERE @nroOrdemReuniao = nroOrdemReuniao
-			
+
 	END;
 GO
 
@@ -112,30 +112,30 @@ AS
 	BEGIN
 		DECLARE
 			@nroOrdem INT,
-			@id_membro INT			
+			@id_membro INT
 		SELECT @nroOrdem= nroOrdem FROM deleted
 		DELETE FROM ATA WHERE nroOrdemReuniao = @nroOrdem
-		DECLARE mp_cursor CURSOR LOCAL FOR 
+		DECLARE mp_cursor CURSOR LOCAL FOR
 			SELECT id_membro FROM MEMBROSPRESENTES WHERE nroOrdemReuniao = @nroOrdem
 			OPEN mp_cursor
 			FETCH NEXT FROM mp_cursor INTO @id_membro
-			
+
 			WHILE @@FETCH_STATUS = 0
 			BEGIN
 				DELETE FROM MEMBROSPRESENTES WHERE id_membro = @id_membro
 				FETCH NEXT FROM mp_cursor INTO @id_membro
-			END;	
+			END;
 		CLOSE mp_cursor
 		DEALLOCATE mp_cursor
 		DELETE FROM REUNIAO WHERE nroOrdem = @nroOrdem
-			
+
 	END;
 GO
 
 DROP TRIGGER t_deleteof_ccursos
 GO
 CREATE TRIGGER t_deleteof_ccursos ON CONSELHOCOORDENACAOCURSO INSTEAD OF DELETE
-AS	
+AS
 	BEGIN
 		DECLARE
 		@codigoCurso INT,
@@ -146,7 +146,7 @@ AS
 		DECLARE m_cursor CURSOR FOR SELECT id_membro FROM MEMBRO WHERE codigoCoordenacaoCurso = @codigoCurso
 		OPEN m_cursor
 		FETCH NEXT FROM m_cursor INTO @id_membro
-		WHILE @@FETCH_STATUS =0 
+		WHILE @@FETCH_STATUS =0
 			BEGIN
 				DELETE FROM MEMBRO WHERE id_membro = @id_membro
 				FETCH NEXT FROM m_cursor INTO @id_membro
@@ -165,7 +165,7 @@ AS
 		DEALLOCATE r_cursor
 		DELETE FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = @codigoCurso
 	END;
-GO	
+GO
 
 	DROP TRIGGER t_deleteof_membro
 	GO
@@ -176,12 +176,12 @@ GO
 		 @id_membro INT,
 		 @id_comunicacao INT
 
-		 SELECT @id_membro= id_membro FROM DELETED 
+		 SELECT @id_membro= id_membro FROM DELETED
 		 DELETE FROM MEMBROSPRESENTES WHERE id_membro = @id_membro
 		 DECLARE cp_cursor CURSOR FOR SELECT id_comunicacao FROM COMUNICACOESPRESIDENCIA WHERE id_membro = @id_membro
 		 OPEN cp_cursor
 		 FETCH NEXT FROM cp_cursor INTO @id_comunicacao
-		 WHILE @@FETCH_STATUS =0 
+		 WHILE @@FETCH_STATUS =0
 			BEGIN
 				DELETE FROM COMUNICACOESPRESIDENCIA WHERE id_comunicacao = @id_comunicacao
 				FETCH NEXT FROM cp_cursor INTO @id_comunicacao
@@ -201,23 +201,34 @@ GO
 		 @codigo INT
 
 		 SELECT @codigo= codigo FROM DELETED
-		 DELETE FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = @codigo 
+		 DELETE FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = @codigo
 		 DELETE FROM CURSO WHERE codigo = @codigo
 	END;
 	GO
-	
+
 	DROP TRIGGER t_deleteof_pessoa
 	GO
 	CREATE TRIGGER t_deleteof_pessoa ON PESSOA INSTEAD OF DELETE
 	AS
 	BEGIN
-		DECLARE 
-			@CPF NVARCHAR(14)
+		DECLARE @CPF NVARCHAR(14);
+		DECLARE curr CURSOR FOR SELECT CPF FROM deleted;
 
-			SELECT @CPF=cpf_pessoa FROM DELETED
+		OPEN curr;
+		FETCH NEXT FROM curr INTO @cpf_pessoa;
+		WHILE @@FETCH_STATUS = 0;
+		BEGIN
+			print @CPF;
+			DELETE FROM Docente WHERE cpf_docente = @CPF
+			DELETE FROM TecnicoAdm WHERE cpf_tecnicoAdm = @CPF
+			DELETE FROM Estudante WHERE cpf_estudante = @CPF
 			DELETE FROM MEMBRO WHERE CPF = @CPF
 			DELETE FROM PESSOA WHERE cpf_pessoa = @CPF
+
+			FETCH NEXT FROM curr INTO @CPF;
 	END;
+		CLOSE curr;
+		DEALLOCATE curr;
 	GO
 
 DROP TRIGGER t_deleteof_departamento

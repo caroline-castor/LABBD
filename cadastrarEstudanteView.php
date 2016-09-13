@@ -17,12 +17,23 @@ and open the template in the editor.
             <div id="conteudo">
                 <form action="cadastrarEstudante.php" autocomplete="off" class="form-control" name="cadastroEstudante" method="post">
                     <table align="center">
-                        <tr valign="baseline">    
+                      <tr valign="baseline">
                             <td nowrap="nowrap" align="right">CPF:</td>
-                            <td><input type="text" required name="cpf_estudante" value="" /></td>
-                        </tr>
+                            <td>
+                            <select name="cpf_Estudante">
+                                <?php require_once 'connectToSQLServer.php';
+                                $tsql = "SELECT cpf_pessoa FROM v_Pessoa";
+                                $stmt = sqlsrv_query($conn, $tsql);
+
+                                while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
+                                    echo "<option value='". $row['cpf_pessoa']."'>".$row['cpf_pessoa']."</option>";
+                                }
+                                ?>
+                            </select>
+                            </td>
+                      </tr>
                         <tr valign="baseline">
-                            <td nowrap="nowrap" align="right">RA:</td>    
+                            <td nowrap="nowrap" align="right">RA:</td>
                             <td><input type="text" required name="RA" value="" /></td>
                         </tr>
                         <tr valign="baseline">

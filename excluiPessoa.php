@@ -10,7 +10,7 @@ $stmt = sqlsrv_query($conn,$tsql);
 if( $stmt === false ){
 echo "Statement could not be executed.\n";
  die( print_r( sqlsrv_errors(), true));
-} 
+}
 
 
 //se nenhum erro ocorrer, redireciona a pagina
@@ -26,5 +26,3 @@ sqlsrv_close( $conn);
 
 
 ?>
-
-

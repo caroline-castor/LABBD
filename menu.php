@@ -18,11 +18,22 @@
                     <li><a href="visualizarPessoa.php">Visualizar</a></li>
                 </ul>
 
-                <h3 class="link-titulo">Membro do Conselho Coordenacão de Curso</h3>
+                <h3 class="link-titulo">Docente</h3>
                 <ul class="box">
-                    <li><a href="cadastraMembroView.php">Cadastrar</a></li>
-                    <li><a href="visualizarMembro.php">Visualizar</a></li>
-                    <!-- mais links -->
+                    <li><a href="cadastrarDocenteView.php">Cadastrar</a></li>
+                    <li><a href="visualizarDocente.php">Visualizar</a></li>
+                </ul>
+
+                <h3 class="link-titulo">Tecnico Administrativo</h3>
+                <ul class="box">
+                    <li><a href="cadastrarTecnicoAdmView.php">Cadastrar</a></li>
+                    <li><a href="visualizarTecnicoAdm.php">Visualizar</a></li>
+                </ul>
+
+                <h3 class="link-titulo">Estudante</h3>
+                <ul class="box">
+                    <li><a href="cadastrarEstudanteView.php">Cadastrar</a></li>
+                    <li><a href="visualizarEstudante.php">Visualizar</a></li>
                 </ul>
 
                 <h3 class="link-titulo">Conselho Coordenacão de Curso</h3>
@@ -106,8 +117,8 @@
                     <li><a href="visualizarSala.php">Visualizar </a></li>
                     <!-- mais links -->
                 </ul>
-                
-                
+
+
                   <h3 class="link-titulo">Conceito ENADE</h3>
                 <ul class="box">
                     <li><a href="cadastrarEnadeView.php">Cadastrar </a></li>

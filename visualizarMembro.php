@@ -6,8 +6,8 @@ $stmt = sqlsrv_query($conn, $tsql);
 
 <html>
     <head>
-        <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" /> 
-   
+        <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
+
         <title>Membros</title>
     </head>
     <link rel="stylesheet" type="text/css" href="Estilo/style.css">
@@ -33,7 +33,7 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['siglaCurso'] . ' - ' . $row['nomeCurso']; ?>&nbsp; </td>
 
 
-                            
+
                             <td class="actions">
                                 <a class="btn btn-danger btn-xs" href="excluiMembro.php?id_membro=<?php echo $row['id_membro'];?>">Excluir</a>
                             </td>
@@ -59,6 +59,3 @@ $stmt = sqlsrv_query($conn, $tsql);
 <?php
 sqlsrv_close($conn);
 ?>
-
-
-

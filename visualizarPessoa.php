@@ -8,13 +8,13 @@ $stmt = sqlsrv_query($conn, $tsql);
 <html>
     <head>
 
-        <meta http-equiv="content-Type" content="text/html; charset=UTF-8" /> 
-      
+        <meta http-equiv="content-Type" content="text/html; charset=UTF-8" />
+
         <title>Pessoas</title>
     </head>
     <link rel="stylesheet" type="text/css" href="Estilo/style.css">
     <body>
-       
+
         <div id="tudo">
 <?php require_once 'cabecalho.php'; ?>
             <div id="conteudo">
@@ -44,7 +44,7 @@ $stmt = sqlsrv_query($conn, $tsql);
                         <td>Logradouro</td>
                         <td>Numero da Casa</td>
                         <td>Estado</td>
-                        <td>Pais</td>                        
+                        <td>Pais</td>
                     </tr>
 <?php while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) { ?>
                         <tr>
@@ -57,7 +57,7 @@ $stmt = sqlsrv_query($conn, $tsql);
                             <td><?php echo $row['tel2']; ?>&nbsp; </td>
                             <td><?php echo date_format($row['dataNascimento'],'d/m/Y'); ?>&nbsp; </td>
                             <td><?php echo $row['rg']; ?>&nbsp; </td>
-                            <td><?php echo $row['sexo']; ?>&nbsp; </td
+                            <td><?php echo $row['sexo']; ?>&nbsp; </td>
                             <td><?php echo $row['etnia']; ?>&nbsp; </td>
                             <td><?php echo $row['pai_nome']; ?>&nbsp; </td>
                             <td><?php echo $row['pai_sobrenome']; ?>&nbsp; </td>
@@ -94,5 +94,3 @@ $stmt = sqlsrv_query($conn, $tsql);
 <?php
 sqlsrv_close($conn);
 ?>
-
-

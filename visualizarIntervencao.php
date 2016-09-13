@@ -9,11 +9,11 @@ $stmt = sqlsrv_query($conn, $tsql);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <title>Intervenções</title>
-       
+
     </head>
     <link rel="stylesheet" type="text/css" href="Estilo/style.css">
     <body>
-       
+
         <div id="tudo">
 <?php require_once 'cabecalho.php'; ?>
             <div id="conteudo">
@@ -59,7 +59,3 @@ $stmt = sqlsrv_query($conn, $tsql);
 <?php
 sqlsrv_close($conn);
 ?>
-
-
-
-

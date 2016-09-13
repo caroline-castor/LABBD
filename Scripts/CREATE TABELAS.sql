@@ -1,4 +1,4 @@
-/*
+
 DROP TABLE ENADE_realizado
 DROP TABLE ENADE_avalia
 DROP TABLE ENADE
@@ -12,7 +12,6 @@ DROP TABLE Docente
 DROP TABLE TecnicoAdm
 DROP TABLE MEMBROSINTERVENCAO
 DROP TABLE MEMBROSPRESENTES
-DROP TABLE MEMBRO_CONSELHOCOORDENACAOCURSO
 DROP TABLE MEMBRO
 DROP TABLE Pessoa
 DROP TABLE Departamento
@@ -21,8 +20,8 @@ DROP TABLE Ofertante
 DROP TABLE ATA
 DROP TABLE REUNIAO
 DROP TABLE CONSELHOCOORDENACAOCURSO
-DROP TABLE CURSO*/
-
+DROP TABLE CURSO
+GO
 --tabela atribuida a outro membro mas precisei para realizar inserts
 CREATE TABLE CURSO(
 	codigo INT IDENTITY(1,1)PRIMARY KEY NOT NULL,
@@ -90,10 +89,10 @@ CREATE TABLE Pessoa(
 	email1				NVARCHAR(50)	NOT NULL,
 	email2				NVARCHAR(50),
 	tel1 				NVARCHAR(13)	NOT NULL,
-	tel2 				NVARCHAR(13),	
+	tel2 				NVARCHAR(13),
 	nome 				NVARCHAR(30)	NOT NULL,
 	sobrenome 			NVARCHAR(30)	NOT NULL,
-	dataNascimento 		DATE 			NOT NULL, 
+	dataNascimento 		DATE 			NOT NULL,
 	rg					NVARCHAR(13)	NOT NULL,
 	sexo				NVARCHAR(20)	NOT NULL,
 	etnia 				NVARCHAR(30)	NOT NULL,
@@ -126,7 +125,6 @@ CREATE TABLE MEMBRO(
 
 Alter Table MEMBRO ADD CONSTRAINT fk_membro_conselho FOREIGN KEY(codigoCoordenacaoCurso, sigla) references CONSELHOCOORDENACAOCURSO(codigoCurso, sigla) ;
 
-
 CREATE TABLE MEMBROSPRESENTES(
 	nroOrdemReuniao INT,
 	CPF NVARCHAR(14),
@@ -152,7 +150,7 @@ CREATE TABLE TecnicoAdm(
 
 	CONSTRAINT 	pk_tecnicoAdm				PRIMARY KEY (cpf_tecnicoAdm),
 	CONSTRAINT  fk_tecnicoAdm_pessoa    	FOREIGN KEY (cpf_tecnicoAdm) 	REFERENCES 	Pessoa 		(cpf_pessoa),
-	CONSTRAINT	fk_tecnicoAdm_departamento	FOREIGN KEY (trabalha_em)		REFERENCES	Departamento(siglaOfertante)			
+	CONSTRAINT	fk_tecnicoAdm_departamento	FOREIGN KEY (trabalha_em)		REFERENCES	Departamento(siglaOfertante)
 );
 
 CREATE TABLE Docente(
@@ -162,7 +160,7 @@ CREATE TABLE Docente(
 
 	CONSTRAINT 	pk_Docente					PRIMARY KEY (cpf_docente),
 	CONSTRAINT  fk_docente_pessoa	    	FOREIGN KEY (cpf_docente) 	REFERENCES 	Pessoa 		(cpf_pessoa),
-	CONSTRAINT	fk_docente_departamento		FOREIGN KEY (ligadoA)		REFERENCES	Departamento(siglaOfertante)		
+	CONSTRAINT	fk_docente_departamento		FOREIGN KEY (ligadoA)		REFERENCES	Departamento(siglaOfertante)
 );
 
 CREATE TABLE Estudante(
@@ -196,41 +194,6 @@ CREATE TABLE COMUNICACOESPRESIDENCIA(
 
 );
 
-
-CREATE TABLE Predio
-(
-	sigla varchar(10),
-	imagem varchar(255),
-	mapaLocalizacao varchar(255),
-	gpsLat varchar(11),
-	gpsLog varchar(11),
-	descricao varchar(255),
-	intervaloSala varchar(5),
-
-	CONSTRAINT pk_predio PRIMARY KEY (sigla)
-);
-
-CREATE TABLE TipoSala
-(
-	sigla varchar(10) not null,
-	tipo varchar(255) not null
-
-	CONSTRAINT pk_tipo_sala PRIMARY KEY (sigla)
-);
-
-CREATE TABLE Sala
-(
-	sigla_predio varchar(10),
-	numero smallint not null,
-	capacidadeEfetiva smallint not null,
-	capacidade smallint not null,
-	siglaTipo varchar(10),
-
-	CONSTRAINT fk_sala_predio FOREIGN KEY (sigla_predio) REFERENCES Predio(sigla),
-	CONSTRAINT fk_sala_tiposala FOREIGN KEY (siglaTipo) REFERENCES TipoSala(sigla),
-	CONSTRAINT pk_sala PRIMARY KEY (sigla_predio, numero)
-);
-
 CREATE TABLE ENADE(
 	ano int not null primary key,
 	periodo int not null
@@ -238,13 +201,13 @@ CREATE TABLE ENADE(
 
 CREATE TABLE ENADE_avalia(
 	ano int not null,
-	conceito int not null, 
+	conceito int not null,
 	codigo int not null,
 
 	CONSTRAINT fk_enade FOREIGN KEY(ano)
 	REFERENCES ENADE(ano),
 
-	CONSTRAINT fk_enade_curso FOREIGN KEY(codigo) 
+	CONSTRAINT fk_enade_curso FOREIGN KEY(codigo)
 	REFERENCES CURSO(codigo),
 
 	CONSTRAINT pk_enade_avalia PRIMARY KEY(ano, codigo)
@@ -255,7 +218,7 @@ CREATE TABLE ENADE_realizado(
 	cpf_estudante nvarchar(14) not null,
 	data date,
 	nota float not null,
-	
+
 	constraint fk_enadeR foreign key(ano)
 	references ENADE(ano),
 

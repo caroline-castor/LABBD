@@ -4,7 +4,7 @@ IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
     DROP VIEW v_pessoa
 GO
 -- CODIGO VIEW
-CREATE VIEW v_pessoa 
+CREATE VIEW v_pessoa
 	AS
 		SELECT cpf_pessoa,nome FROM PESSOA
 GO
@@ -47,7 +47,7 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_comunicacoesPresidencia
 	AS
-		SELECT COM.nroOrdemReuniao, R.data, C.nome nomeCurso, COM.comunicacao, P.nome nomeMembro FROM 
+		SELECT COM.nroOrdemReuniao, R.data, C.nome nomeCurso, COM.comunicacao, P.nome nomeMembro FROM
 			COMUNICACOESPRESIDENCIA COM, REUNIAO R, CURSO C, PESSOA P
 				WHERE COM.nroOrdemReuniao = R.nroOrdem AND C.codigo = R.codigoCoordenacaoCurso AND COM.CPF = P.cpf_pessoa
 GO
@@ -61,7 +61,7 @@ GO
 -- CODIGO VIEW
 CREATE VIEW v_visualizaMembro
 	AS
-		SELECT M.id_membro, M.CPF, P.nome, P.sobrenome, M.portariaIdentificacao, M.sigla AS siglaCurso, C.nome as nomeCurso, M.codigoCoordenacaoCurso  FROM MEMBRO M, PESSOA P, CURSO C 
+		SELECT M.id_membro, M.CPF, P.nome, P.sobrenome, M.portariaIdentificacao, M.sigla AS siglaCurso, C.nome as nomeCurso, M.codigoCoordenacaoCurso  FROM MEMBRO M, PESSOA P, CURSO C
 WHERE P.cpf_pessoa = M.CPF AND C.codigo = M.codigoCoordenacaoCurso
 
 GO
@@ -105,12 +105,12 @@ GO
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
         WHERE TABLE_NAME = 'v_visualizaReuniaoSemAta')
     DROP VIEW v_visualizaReuniaoSemAta
-	
+
 GO
 -- CODIGO VIEW
 CREATE VIEW v_visualizaReuniaoSemAta
 	AS
-		
+
 	SELECT * FROM v_visualizaReuniao WHERE nroOrdem NOT IN (SELECT nroOrdemReuniao FROM ATA)
 
 GO
@@ -130,12 +130,12 @@ GO
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS
         WHERE TABLE_NAME = 'v_visualizaCoordenacaoReuniaoMembro')
     DROP VIEW v_visualizaCoordenacaoReuniaoMembro
-	
+
 GO
 -- CODIGO VIEW
 CREATE VIEW v_visualizaCoordenacaoReuniaoMembro
 	AS
-		
+
 	SELECT M.id_membro, M.CPF, P.nome, P.sobrenome, R.nroOrdem, R.codigoCoordenacaoCurso FROM MEMBRO M, REUNIAO R, PESSOA P  WHERE M.codigoCoordenacaoCurso = R.codigoCoordenacaoCurso AND
 	P.cpf_pessoa = M.CPF;
 GO
@@ -149,7 +149,7 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_membrosIntervencao
 	AS
-		SELECT M.nroOrdemReuniao, M.id_intervencao, M.intervencao, R.pauta, M.CPF, P.nome, P.sobrenome FROM MEMBROSINTERVENCAO M, PESSOA P, REUNIAO R 
+		SELECT M.nroOrdemReuniao, M.id_intervencao, M.intervencao, R.pauta, M.CPF, P.nome, P.sobrenome FROM MEMBROSINTERVENCAO M, PESSOA P, REUNIAO R
 			WHERE P.cpf_pessoa = M.CPF AND  M.nroOrdemReuniao = R.nroOrdem
 GO
 
@@ -163,7 +163,7 @@ GO
 CREATE VIEW v_decisoesAprovadas
 	AS
 		SELECT DA.id_decisao, DA.id_intervencao, DA.nroOrdemReuniao, MI.intervencao, MI.CPF, P.nome, P.sobrenome, R.pauta FROM
-		DECISOESAPROVADAS DA, MEMBROSINTERVENCAO MI, PESSOA P, REUNIAO R WHERE DA.id_intervencao = MI.id_intervencao AND 
+		DECISOESAPROVADAS DA, MEMBROSINTERVENCAO MI, PESSOA P, REUNIAO R WHERE DA.id_intervencao = MI.id_intervencao AND
 		MI.CPF = P.cpf_pessoa AND DA.nroOrdemReuniao = R.nroOrdem;
 GO
 
@@ -192,7 +192,7 @@ GO
 --CODIGO VIEW
 CREATE VIEW v_ata
 	AS
-		SELECT R.pauta, R.data, A.textoDescritivo, A.nroOrdemReuniao, C.nome, CC.sigla FROM ATA A, REUNIAO R, CURSO C, CONSELHOCOORDENACAOCURSO CC 
+		SELECT R.pauta, R.data, A.textoDescritivo, A.nroOrdemReuniao, C.nome, CC.sigla FROM ATA A, REUNIAO R, CURSO C, CONSELHOCOORDENACAOCURSO CC
 			WHERE (A.nroOrdemReuniao = R.nroOrdem) AND (R.codigoCoordenacaoCurso = C.codigo) AND (R.codigoCoordenacaoCurso = CC.codigoCurso)
 GO
 
@@ -201,25 +201,35 @@ GO
 DROP VIEW student
 DROP VIEW ta
 DROP VIEW docenteView
-GO 
+GO
+
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_NAME = 'v_pessoa')
+    DROP VIEW v_pessoa;
+GO
+
+CREATE VIEW v_pessoa
+  AS
+    SELECT cpf_pessoa AS CPF
+      FROM Pessoa
+GO
 
 CREATE VIEW student
 AS
-	SELECT s.cpf_estudante, s.ra, p.nome, p.sobrenome 
+	SELECT s.cpf_estudante, s.ra, p.nome, p.sobrenome
 	FROM Pessoa p, Estudante s
 	WHERE p.cpf_pessoa = s.cpf_estudante
 GO
 
 CREATE VIEW ta
 AS
-	SELECT ta.cpf_tecnicoAdm, p.nome, p.sobrenome 
+	SELECT ta.cpf_tecnicoAdm, p.nome, p.sobrenome
 	FROM Pessoa p, TecnicoAdm ta
 	WHERE p.cpf_pessoa = ta.cpf_tecnicoAdm
 GO
 
 CREATE VIEW docenteView
 AS
-	SELECT d.cpf_docente, p.nome, p.sobrenome, d.SIAPE 
+	SELECT d.cpf_docente, p.nome, p.sobrenome, d.SIAPE
 	FROM Pessoa p, Docente d
 	WHERE p.cpf_pessoa = d.cpf_docente
 GO
@@ -231,7 +241,7 @@ SELECT * FROM TecnicoAdm
 SELECT * FROM Docente
 SELECT * FROM Estudante
 */
-/* SELECTS VIEWS 
+/* SELECTS VIEWS
 
 SELECT * FROM student
 SELECT * FROM ta
@@ -242,21 +252,21 @@ SELECT * FROM docentView
 
 GO
 
-CREATE VIEW v_Predio  
-AS   
-SELECT   	sigla			
-         , 	imagem			
-         , 	mapaLocalizacao	
-         , 	gpsLat			
-         , 	gpsLog   		
-         , 	descricao		
-		 , 	intervaloSalaMenor	
-		 , 	intervaloSalaMaior 
-FROM        
+CREATE VIEW v_Predio
+AS
+SELECT   	sigla
+         , 	imagem
+         , 	mapaLocalizacao
+         , 	gpsLat
+         , 	gpsLog
+         , 	descricao
+		 , 	intervaloSalaMenor
+		 , 	intervaloSalaMaior
+FROM
         Predio;
-		
-CREATE VIEW v_Sala  
-AS   
+
+CREATE VIEW v_Sala
+AS
 SELECT 		s.siglaPredio		AS Sigla
 		, 	s.numero			AS Numero
 		,	s.capacidadeEfetiva	AS CapacidadeE
