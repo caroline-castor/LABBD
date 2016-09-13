@@ -15,7 +15,7 @@ and open the template in the editor.
         <div id="tudo">
             <?php require_once 'cabecalho.php' ?>;
             <div id="conteudo">
-                <form action="cadastrarTecnicoAdm.php" autocomplete="off" class="form-control" name="cadastroTecnicoAdm" method="post">
+                <form action="cadastrarTecnicoAdministrativo.php" autocomplete="off" class="form-control" name="cadastroTecnicoAdm" method="post">
                     <table align="center">
                       <tr valign="baseline">
                             <td nowrap="nowrap" align="right">CPF:</td>
@@ -52,7 +52,6 @@ and open the template in the editor.
                         </td>
                         </tr>
                         <tr valign="baseline">
-
                             <td colspan="2"><input type="submit" value="Cadastrar Tecnico Administrativo" name="enviarTecnicoAdministrativo" /></td>
                         </tr>
                     </table>

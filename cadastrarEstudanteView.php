@@ -20,7 +20,7 @@ and open the template in the editor.
                       <tr valign="baseline">
                             <td nowrap="nowrap" align="right">CPF:</td>
                             <td>
-                            <select name="cpf_Estudante">
+                            <select name="cpf_estudante">
                                 <?php require_once 'connectToSQLServer.php';
                                 $tsql = "SELECT cpf_pessoa FROM v_Pessoa";
                                 $stmt = sqlsrv_query($conn, $tsql);
@@ -38,7 +38,7 @@ and open the template in the editor.
                         </tr>
                         <tr valign="baseline">
                             <td nowrap="nowrap" align="right">Ano conclusao ensino medio:</td>
-                            <td><input type="text" required name="anoConclusaoEm" value="" /></td>
+                            <td><input type="text" required name="anoConclusaoEM" value="" /></td>
                         </tr>
                         <tr valign="baseline">
                             <td nowrap="nowrap" align="right">Escola:</td>

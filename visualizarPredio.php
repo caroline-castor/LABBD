@@ -1,7 +1,7 @@
 <?php
 require_once 'connectToSQLServer.php';
 
-$tsql = "SELECT * FROM v_Predio";
+  $tsql = "SELECT * FROM v_Predio";
 $stmt = sqlsrv_query($conn, $tsql);
 ?>
 
@@ -9,11 +9,11 @@ $stmt = sqlsrv_query($conn, $tsql);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="Estilo/style.css">
-        
+
                <title>Prédio</title>
     </head>
 
-    
+
     <body>
 
         <div id="tudo">
@@ -41,10 +41,10 @@ $stmt = sqlsrv_query($conn, $tsql);
 							<td><?php echo $row['descricao']; ?>&nbsp; </td>
 							<td><?php echo $row['intervaloSalaMenor']; ?>&nbsp; </td>
 							<td><?php echo $row['intervaloSalaMaior']; ?>&nbsp; </td>
-                            
 
 
-                           
+
+
                             <td class="actions">
                                 <a class="btn btn-danger btn-xs" href="excluiPredio.php?sigla=<?php echo $row['sigla'];?>">Excluir</a>
                             </td>
@@ -67,6 +67,3 @@ $stmt = sqlsrv_query($conn, $tsql);
 <?php
 sqlsrv_close($conn);
 ?>
-
-
-

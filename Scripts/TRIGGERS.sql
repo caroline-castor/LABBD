@@ -244,6 +244,8 @@ AS
 		FETCH NEXT FROM cur INTO @sigla;
 		WHILE @@FETCH_STATUS = 0
 	  BEGIN
+			DELETE FROM Docente WHERE ligadoA = @sigla;
+			DELETE FROM TecnicoAdm WHERE trabalha_em = @sigla;
 			DELETE FROM Departamento WHERE siglaOfertante = @sigla;
 			DELETE FROM Ofertante WHERE sigla = @sigla;
 
@@ -268,9 +270,8 @@ AS
 		WHILE @@FETCH_STATUS = 0
 	  BEGIN
 			DELETE FROM Departamento WHERE siglaCA = @sigla;
-			--DELETE FROM CentroAcademico WHERE siglaOfertante = @sigla;
+			DELETE FROM CentroAcademico WHERE siglaOfertante = @sigla;
 			DELETE FROM Ofertante WHERE sigla = @sigla;
-
 			FETCH NEXT FROM curr INTO @sigla;
 	  END;
 
@@ -280,30 +281,6 @@ AS
 GO
 
 /* ------------------------------ MURIEL ------------------------------ */
-
-DROP TRIGGER mensagemInsercaoEstudante
-GO
-CREATE TRIGGER mensagemInsercaoEstudante
-ON Estudante
-AFTER INSERT
-AS RAISERROR ('Studente Inserted',10,1);
-GO
-
-DROP TRIGGER mensagemInsercaoDocente
-GO
-CREATE TRIGGER mensagemInsercaoDocente
-ON Docente
-AFTER INSERT
-AS RAISERROR ('Professor Inserted',10,1);
-GO
-
-DROP TRIGGER mensagemInsercaoTA
-GO
-CREATE TRIGGER mensagemInsercaoTA
-ON TecnicoAdm
-AFTER INSERT
-AS RAISERROR ('TA Inserted',10,1);
-GO
 
 /* ------------------------------ ------ ------------------------------ */
 

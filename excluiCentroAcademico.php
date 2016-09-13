@@ -8,10 +8,11 @@ $tsql = "DELETE FROM CentroAcademico WHERE siglaOfertante='".$sigla."'";
 $stmt = sqlsrv_query($conn,$tsql);
 //verifica se o retorno é falso
 if( $stmt === false ){
-  echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarCentroAcademico.php">';
- die();
+  //echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarCentroAcademico.php">';
+ //die();
+ echo "Statement could not be executed.\n";
+ die( print_r( sqlsrv_errors(), true));
 }
-
 
 //se nenhum erro ocorrer, redireciona a pagina
 echo '<meta HTTP-EQUIV="Refresh" CONTENT="0.1; URL=visualizarCentroAcademico.php">';

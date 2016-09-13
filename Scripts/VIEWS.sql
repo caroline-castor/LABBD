@@ -234,24 +234,6 @@ AS
 	WHERE p.cpf_pessoa = d.cpf_docente
 GO
 
-/* SELECTS */
-
-/*SELECT * FROM Pessoa
-SELECT * FROM TecnicoAdm
-SELECT * FROM Docente
-SELECT * FROM Estudante
-*/
-/* SELECTS VIEWS
-
-SELECT * FROM student
-SELECT * FROM ta
-SELECT * FROM docentView
-
-*/
-/* -------------------- -------------------- -------------------- */
-
-GO
-
 CREATE VIEW v_Predio
 AS
 SELECT   	sigla
@@ -264,6 +246,7 @@ SELECT   	sigla
 		 , 	intervaloSalaMaior
 FROM
         Predio;
+GO
 
 CREATE VIEW v_Sala
 AS
