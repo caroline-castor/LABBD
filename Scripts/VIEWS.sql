@@ -209,7 +209,7 @@ GO
 
 CREATE VIEW v_pessoa
   AS
-    SELECT cpf_pessoa AS CPF
+    SELECT cpf_pessoa
       FROM Pessoa
 GO
 

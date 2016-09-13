@@ -2,7 +2,7 @@
 
 $cpf= $_GET["cpf_pessoa"];
 // Armazena a query de insercao
-$tsql = "DELETE FROM PESSOA WHERE cpf_pessoa=".$cpf;
+$tsql = "DELETE FROM PESSOA WHERE cpf_pessoa='".$cpf."'";
 
 //executa a query tsql, resultado fica em stmt
 $stmt = sqlsrv_query($conn,$tsql);
