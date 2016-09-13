@@ -17,11 +17,19 @@
                     <li><a href="cadastraPessoaView.php">Cadastrar</a></li>
                     <li><a href="visualizarPessoa.php">Visualizar</a></li>
                 </ul>
+				
 
                 <h3 class="link-titulo">Docente</h3>
                 <ul class="box">
                     <li><a href="cadastrarDocenteView.php">Cadastrar</a></li>
                     <li><a href="visualizarDocente.php">Visualizar</a></li>
+                </ul>
+				
+				
+				<h3 class="link-titulo">Membro Conselho Coordenacao Curso</h3>
+                <ul class="box">
+                    <li><a href="cadastraMembroView.php">Cadastrar</a></li>
+                    <li><a href="visualizarMembro.php">Visualizar</a></li>
                 </ul>
 
                 <h3 class="link-titulo">Tecnico Administrativo</h3>
@@ -35,6 +43,13 @@
                     <li><a href="cadastrarEstudanteView.php">Cadastrar</a></li>
                     <li><a href="visualizarEstudante.php">Visualizar</a></li>
                 </ul>
+				
+				 <h3 class="link-titulo">Curso</h3>
+                <ul class="box">
+                    <li><a href="cadastrarCursoView.php">Cadastrar</a></li>
+                    <li><a href="visualizarCurso.php">Visualizar</a></li>
+                    <!-- mais links -->
+                </ul>
 
                 <h3 class="link-titulo">Conselho Coordenacão de Curso</h3>
                 <ul class="box">
@@ -43,13 +58,7 @@
                     <!-- mais links -->
                 </ul>
 
-                 <h3 class="link-titulo">Curso</h3>
-                <ul class="box">
-                    <li><a href="cadastrarCursoView.php">Cadastrar</a></li>
-                    <li><a href="visualizarCurso.php">Visualizar</a></li>
-                    <!-- mais links -->
-                </ul>
-
+                
                   <h3 class="link-titulo">Centro Acadêmico</h3>
                 <ul class="box">
                     <li><a href="cadastraCentroAcademicoView.php">Cadastrar</a></li>
