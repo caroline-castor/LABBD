@@ -1,4 +1,5 @@
---DROP TRIGGER t_insertof_membrosPresentes
+DROP TRIGGER t_insertof_membrosPresentes
+GO
 CREATE TRIGGER t_insertof_membrosPresentes ON MEMBROSPRESENTES INSTEAD OF INSERT
 AS
 	BEGIN
@@ -24,7 +25,8 @@ AS
 GO
 
 
---DROP TRIGGER t_deleteof_decisoesAprovadas
+DROP TRIGGER t_deleteof_decisoesAprovadas
+GO
 CREATE TRIGGER t_deleteof_decisoesAprovadas ON DECISOESAPROVADAS INSTEAD OF DELETE
 AS
 	BEGIN
@@ -39,10 +41,8 @@ AS
 	END;
 GO
 
-
-
-
---DROP TRIGGER t_deleteof_membrosIntervencao
+DROP TRIGGER t_deleteof_membrosIntervencao
+GO
 CREATE TRIGGER t_deleteof_membrosIntervencao ON MEMBROSINTERVENCAO INSTEAD OF DELETE
 AS
 	BEGIN
@@ -60,9 +60,10 @@ AS
 		 DELETE FROM MEMBROSINTERVENCAO WHERE id_intervencao = @id_intervencao	
 		
 	END;
+GO
 
-
---DROP TRIGGER t_deleteof_membrosPresentes
+DROP TRIGGER t_deleteof_membrosPresentes
+GO
 CREATE TRIGGER t_deleteof_membrosPresentes ON MEMBROSPRESENTES INSTEAD OF DELETE
 AS
 	BEGIN
@@ -85,8 +86,10 @@ AS
 			DELETE FROM MEMBROSPRESENTES WHERE id_membro = @id_membro
 				
 		END;
+GO
 
---DROP TRIGGER t_deleteof_ata
+DROP TRIGGER t_deleteof_ata
+GO
 CREATE TRIGGER t_deleteof_ata ON ATA INSTEAD OF DELETE
 AS
 	BEGIN
@@ -99,10 +102,11 @@ AS
 		DELETE FROM ATA WHERE @nroOrdemReuniao = nroOrdemReuniao
 			
 	END;
+GO
 
 
-
---DROP TRIGGER t_deleteof_reuniao
+DROP TRIGGER t_deleteof_reuniao
+GO
 CREATE TRIGGER t_deleteof_reuniao ON REUNIAO INSTEAD OF DELETE
 AS
 	BEGIN
@@ -126,7 +130,10 @@ AS
 		DELETE FROM REUNIAO WHERE nroOrdem = @nroOrdem
 			
 	END;
---DROP TRIGGER t_deleteof_ccursos
+GO
+
+DROP TRIGGER t_deleteof_ccursos
+GO
 CREATE TRIGGER t_deleteof_ccursos ON CONSELHOCOORDENACAOCURSO INSTEAD OF DELETE
 AS	
 	BEGIN
@@ -158,9 +165,10 @@ AS
 		DEALLOCATE r_cursor
 		DELETE FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = @codigoCurso
 	END;
-	
+GO	
 
-	--DROP TRIGGER t_deleteof_membro
+	DROP TRIGGER t_deleteof_membro
+	GO
 	CREATE TRIGGER t_deleteof_membro ON MEMBRO INSTEAD OF DELETE
 	AS
 	BEGIN
@@ -182,8 +190,10 @@ AS
 		DEALLOCATE cp_cursor
 		DELETE FROM MEMBRO WHERE id_membro = @id_membro
 	END;
+	GO
 
-	--DROP TRIGGER t_deleteof_curso
+	DROP TRIGGER t_deleteof_curso
+	GO
 	CREATE TRIGGER t_deleteof_curso ON CURSO INSTEAD OF DELETE
 	AS
 	BEGIN
@@ -194,8 +204,10 @@ AS
 		 DELETE FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = @codigo 
 		 DELETE FROM CURSO WHERE codigo = @codigo
 	END;
-
-	--DROP TRIGGER t_deleteof_pessoa
+	GO
+	
+	DROP TRIGGER t_deleteof_pessoa
+	GO
 	CREATE TRIGGER t_deleteof_pessoa ON PESSOA INSTEAD OF DELETE
 	AS
 	BEGIN
@@ -206,6 +218,7 @@ AS
 			DELETE FROM MEMBRO WHERE CPF = @CPF
 			DELETE FROM PESSOA WHERE cpf_pessoa = @CPF
 	END;
+	GO
 
 DROP TRIGGER t_deleteof_departamento
 GO

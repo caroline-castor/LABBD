@@ -158,7 +158,7 @@ GO
 CREATE FUNCTION f_getCursosSemConselho()
 RETURNS TABLE
 RETURN (SELECT codigo, nome FROM CURSO C WHERE NOT EXISTS (SELECT * FROM CONSELHOCOORDENACAOCURSO WHERE codigoCurso = codigo));
-
+GO
 /* ------------------------------ MURIEL ------------------------------ */
 
 DROP Procedure BuscaProfessorAluno
